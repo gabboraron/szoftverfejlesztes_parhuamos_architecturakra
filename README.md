@@ -1,21 +1,23 @@
 # Tartalom:
 - [Bevezetés](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#bevezetes)
 - [EA-GY1](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy1)
-  - [Alapfogalmak]()
-  - [Párhuzamos rendszerek osztályozása]()
-    - [Michael J.Flynn-féle osztályozás]()
-    - [`P`arallel `R`andom `A`ccess `M`achine - modell]()
-    - [Adatfolyam-gráf modell]()
-    - [Feladat/csatorna modell ]()
-    - [Futószalagelvű végrehajtás]()
-    - [Szuperskalár végrehajtás]()
-    - [Vektoralapú (SIMD) végrehajtás]()
-    - [Vektoralapú (VLIW) végrehajtás]()
-    - [Szál szinten párhuzamos végrehajtás]()
-    - [Az UMA-és a NUMA memóriamodell]()
-    - [Hibrid (N)UMA-memóriamodell]()
-    - [A ccUMA-és a ccNUMA memóriamodell]()
-- [EA-GY3](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy2)
+  - [Alapfogalmak](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#alapfogalmak)
+  - [Párhuzamos rendszerek osztályozása](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#p%C3%A1rhuzamos-rendszerek-oszt%C3%A1lyoz%C3%A1sa)
+    - [Michael J.Flynn-féle osztályozás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#michael-jflynn-f%C3%A9le-oszt%C3%A1lyoz%C3%A1s)
+    - [`P`arallel `R`andom `A`ccess `M`achine - modell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#parallel-random-access-machine-pram---modell)
+    - [Adatfolyam-gráf modell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#adatfolyam-gr%C3%A1f-modell)
+    - [Feladat/csatorna modell ](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#feladatcsatorna-modell)
+    - [Futószalagelvű végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#fut%C3%B3szalagelv%C5%B1-v%C3%A9grehajt%C3%A1s)
+    - [Szuperskalár végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szuperskal%C3%A1r-v%C3%A9grehajt%C3%A1s)
+    - [Vektoralapú (SIMD) végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#vektoralap%C3%BA-simd-v%C3%A9grehajt%C3%A1s)
+    - [Vektoralapú (VLIW) végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#vektoralap%C3%BA-vliw-v%C3%A9grehajt%C3%A1s)
+    - [Szál szinten párhuzamos végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#sz%C3%A1l-szinten-p%C3%A1rhuzamos-v%C3%A9grehajt%C3%A1s)
+    - [Az UMA-és a NUMA memóriamodell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#az-uma-%C3%A9s-a-numa-mem%C3%B3riamodell)
+    - [Hibrid (N)UMA-memóriamodell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#hibrid-numa-mem%C3%B3riamodell)
+    - [A ccUMA-és a ccNUMA memóriamodell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#a-ccuma-%C3%A9s-a-ccnuma-mem%C3%B3riamodell---cache-coherent)
+    - [Párhuzamos rendszerek elemei közötti kommunikáció]()
+      - [Hálózati topológiák jellemzői]()
+- [EA-GY3](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy3)
  - [Szinkronizáció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szinkroniz%C3%A1ci%C3%B3)
 
 ## Bevezetés
@@ -137,8 +139,29 @@
 ##### A ccUMA-és a ccNUMA memóriamodell - *cache-coherent*
 > külön koherencia protokollt megvalósító egység felel a kommunikációs hálózattal való kapcsolatáról a processzoroknak
 
-
-
+##### Párhuzamos rendszerek elemei közötti kommunikáció
+> Teljesítmény növelés szempontjából lényeges, a párhuzamosított szálak közti kommunikáció minimalizálása a tervezés során.
+> Topológiák:
+> - teljes
+> - csillag
+> - lineáris 1D tömb
+> - 2D vagy 3D tömb
+> - [hiperkocka: 0D, 1D, 2D, 3D, 4D](https://hu.wikipedia.org/wiki/Hiperkocka)
+> - fák: 
+>   - statikus [bináris fa](http://aszt.inf.elte.hu/~asvanyi/ad/ad1jegyzet.pdf#73)
+>   - dinamikus bináris fa
+> ###### Hálózati topológiák jellemzői
+> - Átmérő: a hálózatban két csomóbpont közti legnagyobb kimérhető távolság
+> - szomszédos élek száma: bármely két csomópont közti összeköttetések száma
+> - kapcsolati számosság: minimális élszám amit ha kiveszünk akkor a hálózat kettészakad
+> - felezési szélesség: az a minimális élszám amit ha kiveszünk a hálózat két ***egyforma*** hálózatra esik szét
+> - felezési sávszélesség: a hálózat bármely két része közti minimálisan meglévő sávszélesség
+> - költség: kapcsolatok sázmával, átviteli paraméterekkel arányos jellemző
+> ###### Kommunikáció időbeli jellemzői
+> - késleltetés: az üzenet indítása és megérekzése közti idő, jobb algoritmussal csökkenthető. Csökkentési lehetőségek:
+>   - nem blokkoló küldési és fogadási műveletek
+>   - többszálú programozás
+> - sávszélesség: időegységenkánt átvihető maximális adatmennyiség, a közeg határozza meg
 
 
 ### EA-GY3
