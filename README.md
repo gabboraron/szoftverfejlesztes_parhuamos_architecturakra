@@ -1,8 +1,147 @@
 # Tartalom:
-- [EA-GY2]()
- - [Szinkronizáció]()
- 
-### EA-GY2
+- [Bevezetés](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#bevezetes)
+- [EA-GY1](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy1)
+  - [Alapfogalmak]()
+  - [Párhuzamos rendszerek osztályozása]()
+    - [Michael J.Flynn-féle osztályozás]()
+    - [`P`arallel `R`andom `A`ccess `M`achine - modell]()
+    - [Adatfolyam-gráf modell]()
+    - [Feladat/csatorna modell ]()
+    - [Futószalagelvű végrehajtás]()
+    - [Szuperskalár végrehajtás]()
+    - [Vektoralapú (SIMD) végrehajtás]()
+    - [Vektoralapú (VLIW) végrehajtás]()
+    - [Szál szinten párhuzamos végrehajtás]()
+    - [Az UMA-és a NUMA memóriamodell]()
+    - [Hibrid (N)UMA-memóriamodell]()
+    - [A ccUMA-és a ccNUMA memóriamodell]()
+- [EA-GY3](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy2)
+ - [Szinkronizáció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szinkroniz%C3%A1ci%C3%B3)
+
+## Bevezetés
+> Párhuzamos programozáshoz a Neumann architectúrás gépeken szükséges a programnyelv kifejezett támogatása a számítási feladatok egymással egyidőben való részfeladatokra bontására és a számítás elvégzésére közel párhuzamosítva.
+>
+> **Miért van erre szükség**
+> 
+> - A reálisan elérhető maximális órajel 5GHz, míg a processzorok belsejében lévő adatutak hossza elég hosszú ahhzo, hoyg ha fénysebességgel is közlekedik az adat akkor sem érjen át időben egyik végéből a másikba, a sávszél növelésével pedig nagy hőingadozáshoz jutunk a processzor egyik végétől a másikig.
+> - A számítási korlátok sem elhanyagolhatóak, egy általános programban 4-6, de gyakorlatialg inkább 2-3 utasítás fut párhuzamosan. A memóriák sebességének nvekedése elmarad a processzoroktól, így, párhuzamosítva viszont jobban kihasználhatóak. Az elosztott hálózati számításokra való ígény is igen magas.
+> 
+> **Párhuzamosítás határai**
+> - *Függőségek*, egymárautaltságok alakulnak ki két feladat között, amik akadályozhatják a párhuzaomsítást. Ilyen lehet:
+>    - *adatfüggőség* mikor egy művelet eredményét egy másik művelet bementként várja
+>    - *elágazási függőség* egy művelet eredméyne dönti el, hogy egy másik műveletet végre kell-e hajtani, vagy melyik művelet jöjjön sorra
+>    - *erőforrás függőség* egy erőforrásra több művelet is foglalkozna és meg kell várják míg az egyik végez a másikkal.
+> - *Szinkronizáció* segítésgével két párhuzamos feladat között megjósolható közös pontot keresünk. Használható két művelet eredményeinek ellenőrzésére például. Ha nincs szükség szinkronizálása akkor *aszinkron* műveletet kapunk.
+
+### EA-GY1
+#### Alapfogalmak:
+- soros végrehajtás: fizikailag egy időben, eegy művelet végrehajtásának lehetősége.
+- párhuzamos végrehajtás: egy időben egynél több művelet végrehajtásának lehetősége
+- kvázipárhuzamos végrehajtás: látszólagos párhuzamosság időosztásos technológiával
+- egyidejűség: párhuzamos végrehajtás esetén kettő vagy több művelet egy időben egymást átfedő végrehajtása
+- kvázi egyidejűség: kvázipárhuzamos végrehajtás kettő vagy több művelet logikailag időben egymást átfedő végrehajtása
+- program: utasítások halmaza, feladatokra bontható
+- folyamat: végrehajtás alatt álló progaram, szőröstől bőröstől
+- szál: folyamaton belüli alegység
+- végrehajtási egység: egy adott szál legkisebb végrehajtható részhalmaza
+- feldolgozó egység: végreajtási egységet feldolgozó hardverelem
+#### Párhuzamos rendszerek osztályozása
+##### Michael J.Flynn-féle osztályozás
+> *1966-ból származó osztályozás a legismertebb és legnépszerűbb osztályozási módszere. Alapfelvetés: minden számítógép utasításfolymaokat hajt végre, melyek segítségével adatfolyamokon végez műveleteket:*
+> | **SISD** 1 utasítás, 1 adatfolyam  | **SIMD** 1 utasítás, több adatfolyam |
+> | ---------------------------------- | ------------------------------------ |
+> | Soros működésű, hagyományos gépek  | Vektorszámítógépek, több formában léteztek már, GPGPU architectúrák |
+
+> | **MISD** több utasítás, 1 adatfolyam  | **MIMD** több utasítás, több adatfolyam |
+> | ------------------------------------- | --------------------------------------- |
+> | Hibatűrő architectúrák, űrrepülők, stb, melyeknél több VE is ugyanazt végzi, és az eredméyeknek egyezniük kell | teljesen párhuzamos sázmítógép melynél minden egység külön programozható fel  |
+> 
+> **Problémák:**
+> - Általában a memóriából származnak az adatok, és csak soronként kerülnek a memóriába.
+> - Tulzó, a kis különbségek tekintetében
+> - Nem ismer köztes osztályokat => nehezen finomítható
+> - Erősen hardverközpontú => nehéz kialakítani párhuzamos rendszereket.
+**Finomítás:**
+- prognyelv és környezet dimenziója
+- Végrehajtási elemk együttműködésének dimenziói
+- implicit párhuzamosság, fordító progam által vezérelt párhuzamosság, stb
+
+##### `P`arallel `R`andom `A`ccess `M`achine (PRAM) - modell 
+> Egy Neumann-elvű gép továbbgondolása párhuzamos formában.
+> - Osztott memória
+> - elvben akármyneni feldolgozó egységgel
+> - elhanyagolja a kommunikáció és szinkronizáció problémáit
+> - ütközésekre négy módszer:
+>   - EREW: kizárólagos olvasás és írás
+>   - CREW: egyidejű olvasás és kizárólagos írás
+>   - ERCW: kizárólagos olvasás és egyidejű írás
+>   - CRCW: egyidejű olvasás és egyidejű írás
+> 
+> egyidejű írás kezelése:
+> - közös: minden írási művelet ugyanazt az adatot írja
+> - önkényes: egyik írás sikeres a többi továbblép
+> - prioritásos: fontossági mutató dönt, hogy melyik lesz sikeres
+> - egyéb, mint AND, OR, SUM kombinálása
+>
+> **Algoritmusok becsülyt költsége:`O`*`(időígény*processzorszám)`***
+
+##### Adatfolyam-gráf modell 
+> bemenő adatfolymaokból a modellstruktúrát felépítő feldolgozó egységek kimenő adatfolyamokat állítanak elő. Adatfolyam-ábrával moddelezhető.
+
+##### Feladat/csatorna modell 
+> *Ian T. Foster, 1995*
+>
+> [https://www.mcs.anl.gov/~itf/dbpp/](https://www.mcs.anl.gov/~itf/dbpp/)
+> - A párhuzamosítató utasítások egy nagy feladathalmaz
+> - egy feladat önmagában hagyományos soros végrehajtású program aminek helyi memória és be/ki menetei portok állnak rendelkezésére. 
+> Négy alapművelet:
+>  - üzenet küldése
+>  - üzenet fogadása
+>  - új feladat létrehozása
+>  - feladat befejezése 
+
+##### Futószalagelvű végrehajtás
+> A végrehajtást lépcsőkre bontjuk, és órajelenként lépünk a lépcsőben:
+>![futószalag ábra](https://upload.wikimedia.org/wikipedia/commons/2/21/Fivestagespipeline.png)
+
+##### Szuperskalár végrehajtás
+> Egyszerre több (pl két) futószallagot működtetünk párhuzamosan, viszont a valóságban a függőségek miatt nem lehet gételenül növelni.
+>![szuperskalár ábra](https://upload.wikimedia.org/wikipedia/commons/4/46/Superscalarpipeline.svg)
+
+##### Vektoralapú (SIMD) végrehajtás
+> a fordítóprogramra hagyjuk a párhuzamosítás lehetőségének észlelését, például ugyanazon művelet más-más adatsoron való futtatása
+
+##### Vektoralapú (VLIW) végrehajtás
+> a fordítóprogramra egy hosszú gépi kódú utasításszóba elemzést követően több utasítást is beprésel amik párhuzamosan hajtódnak végre. Ezek általánosítása fikció egyenlőre.
+
+##### Szál szinten párhuzamos végrehajtás
+> Mivel egy  végrehajtási szálon belül biztosan lesznek feloldhatatlan adatfüggőségek amik korlátozzák a párhuzamosítást, a várakozás alatt levő szabad számítási kapacitást egynél több szállal is ellát egy-egy végrehajtó egységet.
+> - **Szimetrikus Többszálú feldolgozás**
+>   - egy processzoron belül bizonyos részegységek sokszorozása, de mindig kevesebbé mint a teljes processzor!
+>   - [Intel Hyper-Threading](https://en.wikipedia.org/wiki/Hyper-threading)
+> - **Többmagos processzor**
+>   - egy egységen belül több processzor, speciálisan összekötve
+> - **Többmagos processzor SMT-vel**
+>   - kombinálva az előző két megoldási lehetőséget
+
+##### Az UMA-és a NUMA memóriamodell
+> **UMA: Uniform Memory Access (közös memória)** más néven: *(symmetric multiprocessor - SMP)*
+> - minden processzor egy közös memórában tárol MINDENT
+> **NUMA: Non-Uniform Memory Access (elosztott memória)** más néven: *(distributed memory - DM)*
+> - minden processzor saját, egymástól független memóriát használ
+
+##### Hibrid (N)UMA memóriamodell
+> - egynél több memóriarész, de nincs mindegyik processzornak sajátja, hanem csokrokba kötve
+> - szuperszámítógépeknél használt
+
+##### A ccUMA-és a ccNUMA memóriamodell - *cache-coherent*
+> külön koherencia protokollt megvalósító egység felel a kommunikációs hálózattal való kapcsolatáról a processzoroknak
+
+
+
+
+
+### EA-GY3
 Csak egyszer írja ki, ohgy `Done`, kihasználva, hogy C#-ban a `bool` alapértelmezett értéke `false`:
 ```C#
 class ThreadTest {
