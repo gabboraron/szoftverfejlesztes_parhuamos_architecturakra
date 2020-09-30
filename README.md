@@ -194,9 +194,6 @@
 > - [Occam nyelv](http://wotug.ukc.ac.uk/parallel/occam/)   
 > - explicit párhuzamosság áll elő, és a programnyelv sé a programozó egymást segíti így, ugynakkor ez új fordítóprogramokat ígényel, és nem garantált a különböző architectúrák közti átjára a nyelvnek.
 ##### Foster négylépéses modell
-> - **Kommunikáció**: kommunikációs ígények megállapítása, megfelelő struktúrák kialakítása
-> - **Összevonás**: az előzőek felülvizsgálata, a megvalósítást figyelembe véve
-> - **Leképzés**: FEladatok feldolgozóegységekhez rendelése
 > ###### Felosztás
 > *számítás és/vagy adatok kisebb részekre bontása, gyakorlati szempontok figyelmen kívűl hagyásával, párhuzamosításra törekedve*
 > - adatfelosztás:
@@ -211,10 +208,64 @@
 > - azonos méretűek a részfeladatok
 > - a részfeladatok száma növekedjen a megoldandó feladattal arányosan
 > - alternatívák felállítása
+>
 > **Függőségi Gráf**:
 > - csomópont: változó hozzárendelés, konstans deklarálás, operátor/függvény hívás
 > - élek: változók/konstansok használata vezérlésben/adatfolyamban
-
+> ###### Kommunikáció
+> *Kommunikációs ígények megállapítása, megfelelő struktúrák kialakítása. A kommunikáció alapvetően a párhuzamosítás okán fellépő szükséges rossz, amire egy soros algoritmusnál nem volna szükség.*
+> - **lokális kommunikáció**: kevés szomszédos feldolgozó egység. pl képfeldolgozás
+> - **globális kommunikáció**: feldolgozóegységeknek részeredményt kell szolgáltatnia
+> 
+> Más felosztási lehetőség:
+> - strukturált és ne mstrukturált
+> - statikus és dinamikus
+> - szinkron és aszinnkron
+>
+> Iránymutatás:
+> - részfeladatok valóban egyidejű végrehajtása lehetséges lesz a választott kommunikációs módszerrel
+> - arányos-e a kommunikáció és a részfeladatok mennyisége
+> - a minimális számú egységgel kommunikál-e egy-egy egység
+> - lehetséges-e az egyidejű kommunikáció
+> ###### Összevonás
+> *az előzőek felülvizsgálata, a megvalósítást figyelembe véve optimalizálási céllal*
+> - az eddigiekkel ellentétben pont hogy nagyobb csoportokba csoportosítjuk a fealdatokat
+> - **kommunikációs veszteségek minimalizálása**:
+>     - gyakran kommunikáló feladatok összevonása
+>     - gyakran küldő és fogad feladatok összegyűjtése az elküldendő üzenetek számának csökkentése végett => kevesebb de nagyobb üzenetcsomagok
+> - **párhuzamosítás és skálázhatóság fenntartása**: ne legyenek nagyok az összevonási méretek, hogy processzorszámtól függetlenül jól fusson.
+> - **fejlesztési költésg csökkentés**: inkább meglévő kódot párhuzamosítsunk mint teljesen újat írjunk
+> tanácsok:
+> - javított-e az összevonás időben, adatmásolásban, kommunikációs ígényben
+> - részfeladatok száma elgendő-e, de nem-e túl sok?
+> - párhuzamosításra áttérni ésszerű-e
+> ###### Leképzés: 
+> *Feladatok feldolgozóegységekhez rendelése. Kommunikáció minimalizálása.*
+> - maximális a kihasználtásg, ha a számítások elosztása tökéletes
+> - két részfeladat azonos processzorra leképzésével csökken a kommunikációs ígény => csoportosítás
+> - legjobb egynesúly megtalálása
+> - független feladatokat különböző OS folyamatokra
+> - kritikus feladatokat a lgegyorsabban elérhető OS feladathoz rendelve
+> - sokat kommunikáló feladatok ugynazon az OS szálon
+> **=> NP teljes probléma, csak heursiztikával megoldható**
+##### Amdahl törvénye
+*egy rendszer sebessége legfeljebb milyen mértékben növelhető, ha csupán részben (azaz csak egyes elemeit) gyorsítják fel*
+> 1/((1-P)+(P/S))
+- *P*: a számítás felgyosított szakasza
+- *S*: a P gyorsulásának mértéke
+**Párhuzamosításra:**
+> 1/(F+((1-F)/N)) 
+- *F*: számítás soros szakaszra
+- *N*: feldolgozó egységek száma
+##### Gustafson törvénye
+*nagyméretű, könnyen párhuzamosítható (ismétlődő elemekből álló) adathalmazok feldolgozása hatékonyan párhuzamosítható*
+> S(P) = P-alpha*(P-1)
+- *P*: feldolgozóegységek száma
+- *S*: eredő gyorsulás mértéke
+- *alpha*: nem párhuzamosítható problémarész
+#### Programhelyesség
+- prgamok helyességének biztosítása vagy megőrzése
+- versengés mértéke
 
 ### EA-GY3
 Csak egyszer írja ki, ohgy `Done`, kihasználva, hogy C#-ban a `bool` alapértelmezett értéke `false`:
