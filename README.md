@@ -15,8 +15,10 @@
     - [Az UMA-és a NUMA memóriamodell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#az-uma-%C3%A9s-a-numa-mem%C3%B3riamodell)
     - [Hibrid (N)UMA-memóriamodell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#hibrid-numa-mem%C3%B3riamodell)
     - [A ccUMA-és a ccNUMA memóriamodell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#a-ccuma-%C3%A9s-a-ccnuma-mem%C3%B3riamodell---cache-coherent)
-    - [Párhuzamos rendszerek elemei közötti kommunikáció]()
-      - [Hálózati topológiák jellemzői]()
+    - [Párhuzamos rendszerek elemei közötti kommunikáció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#p%C3%A1rhuzamos-rendszerek-elemei-k%C3%B6z%C3%B6tti-kommunik%C3%A1ci%C3%B3)
+      - [Hálózati topológiák jellemzői](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#h%C3%A1l%C3%B3zati-topol%C3%B3gi%C3%A1k-jellemz%C5%91i)
+      - [Kommunikáció időbeli jellemzői](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#kommunik%C3%A1ci%C3%B3-id%C5%91beli-jellemz%C5%91i)
+- [EA-GY2](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy2)      
 - [EA-GY3](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy3)
  - [Szinkronizáció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szinkroniz%C3%A1ci%C3%B3)
 
@@ -162,6 +164,42 @@
 >   - nem blokkoló küldési és fogadási műveletek
 >   - többszálú programozás
 > - sávszélesség: időegységenkánt átvihető maximális adatmennyiség, a közeg határozza meg
+
+### EA-GY2
+> Moore törvénye alkalmazható a számítási kapacitásra is, csak ahhoz, hogy igaz legyen párhuzamosításra van szükség.Explicit párhuzamosság az amiről eddig volt szó, mikor párhuzamos programozási modellek teszik lehetővé a párhuzamosítást. Implicit párhuzamosítás az mikor párhuzamos algoritmusokat írunk. A párhuzamos algoritmusokat a **folymatok tulajdonságai**, a **folyamatok közti interakció** és az **adatkezelés módja** különbözteti meg egymástól.
+#### Fejlesztési irányok: 
+##### Fordítóprogramok funkcionalitásának bővítése
+> Párhuzamosításra képes fordítóprogramok amik a soros programozási nyelvben korábban megírt programokban lehetséges párhuzamosítsái lehetőségeket felfedezik és megoldják.
+> 
+> Előnyei: 
+> - nem kell újraiírni sok szoftvert
+> - pénzt és időt spórol
+> Hátrányai:
+> - a soros vezérélési szerkezet és a ciklusok nehezen párhuzamosítható feladatok.
+##### Programozási nyelvek bővítése
+> Meglévő nyelvet kibővítünk egy párhuzamosításra alkalmas utasításkészlettel
+> 
+> Előnyei: 
+> - kevés plusz munka
+> - gyorsan lekészül(t)
+> - könnyen továbbfejleszthető
+> Hátrányai:
+> - a fordprog nem optializál
+> - nehéz debuggolás
+##### Párhuzamos programozási rétegek kialakítása
+> - Az alsó rétegek a számítási műveleteket tartalmazzák
+> - Felső réteg: szabályozza a feldolgozási folyamatok létrehozását, szinkronizációját és befejezését.
+> Következmény: a párhuzamos program irányított gráfként jeleníthető meg, ahol a csomópont soros művelet, élei adatfüggőségek, ugyanakkor ez egy új módszer.
+##### Párhuzamos programozási nyelv
+> - [Occam nyelv](http://wotug.ukc.ac.uk/parallel/occam/)   
+> - explicit párhuzamosság áll elő, és a programnyelv sé a programozó egymást segíti így, ugynakkor ez új fordítóprogramokat ígényel, és nem garantált a különböző architectúrák közti átjára a nyelvnek.
+##### Foster négylépéses modell
+- **Felosztás**: szmítás és/vagy adatok kisebb részekre bontása, gyakorlati szempontok figyelmen kívűl hagyásával, párhuzamosításra törekedve
+- **Kommunikáció**: kommunikációs ígények megállapítása, megfelelő struktúrák kialakítása
+- **Összevonás**: az előzőek felülvizsgálata, a megvalósítást figyelembe véve
+- **Leképzés**: FEladatok feldolgozóegységekhez rendelése
+
+
 
 
 ### EA-GY3
