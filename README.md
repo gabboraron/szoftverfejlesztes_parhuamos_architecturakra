@@ -6,7 +6,7 @@
     - [Michael J.Flynn-féle osztályozás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#michael-jflynn-f%C3%A9le-oszt%C3%A1lyoz%C3%A1s)
     - [`P`arallel `R`andom `A`ccess `M`achine - modell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#parallel-random-access-machine-pram---modell)
     - [Adatfolyam-gráf modell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#adatfolyam-gr%C3%A1f-modell)
-    - [Feladat/csatorna modell ](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#feladatcsatorna-modell)
+    - [Feladat/csatorna modell](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#feladatcsatorna-modell)
     - [Futószalagelvű végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#fut%C3%B3szalagelv%C5%B1-v%C3%A9grehajt%C3%A1s)
     - [Szuperskalár végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szuperskal%C3%A1r-v%C3%A9grehajt%C3%A1s)
     - [Vektoralapú (SIMD) végrehajtás](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#vektoralap%C3%BA-simd-v%C3%A9grehajt%C3%A1s)
@@ -194,12 +194,26 @@
 > - [Occam nyelv](http://wotug.ukc.ac.uk/parallel/occam/)   
 > - explicit párhuzamosság áll elő, és a programnyelv sé a programozó egymást segíti így, ugynakkor ez új fordítóprogramokat ígényel, és nem garantált a különböző architectúrák közti átjára a nyelvnek.
 ##### Foster négylépéses modell
-- **Felosztás**: szmítás és/vagy adatok kisebb részekre bontása, gyakorlati szempontok figyelmen kívűl hagyásával, párhuzamosításra törekedve
-- **Kommunikáció**: kommunikációs ígények megállapítása, megfelelő struktúrák kialakítása
-- **Összevonás**: az előzőek felülvizsgálata, a megvalósítást figyelembe véve
-- **Leképzés**: FEladatok feldolgozóegységekhez rendelése
-
-
+> - **Kommunikáció**: kommunikációs ígények megállapítása, megfelelő struktúrák kialakítása
+> - **Összevonás**: az előzőek felülvizsgálata, a megvalósítást figyelembe véve
+> - **Leképzés**: FEladatok feldolgozóegységekhez rendelése
+> ###### Felosztás
+> *számítás és/vagy adatok kisebb részekre bontása, gyakorlati szempontok figyelmen kívűl hagyásával, párhuzamosításra törekedve*
+> - adatfelosztás:
+>   - kisebb egységekre szedjük az adatokat, hogy megválasszuk, az adatokhoz elvégzendő számításokat
+>   - pl: 3D mátrixot 2D szeletekre, azok 1D szeletekre
+> - funkcionális felosztás: 
+>   - a feladatot részfeladatokra bontjuk
+>   - pl: számozott színezés esetén minden színezés külön részfeladat lehet
+> Ezek helyessgét így ellenőrizhetjük:
+> - legalább egy nagyságrenddel több részfeladat mint végrehajtóegység
+> - ne legyen felesleges számítás/tár ígény
+> - azonos méretűek a részfeladatok
+> - a részfeladatok száma növekedjen a megoldandó feladattal arányosan
+> - alternatívák felállítása
+> **Függőségi Gráf**:
+> - csomópont: változó hozzárendelés, konstans deklarálás, operátor/függvény hívás
+> - élek: változók/konstansok használata vezérlésben/adatfolyamban
 
 
 ### EA-GY3
