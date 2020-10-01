@@ -481,9 +481,17 @@ Ezekre megoldás a `Monitor` osztály, a háttérben a `lock` szintén ezt haszn
 - `TryEnter()`
 - `Exit()`
 
-
-
-
-
-
-
+### EA-GY4
+- Szálak életciklusa: start -> futás -> két lépésben megáll
+- `waitsleepjoin`: vár a flag állapotára, és nem kell `sleep`ekre várni
+- mikor a másik szál befejezte a dolgát `join`ol
+#### `Monitor osztály`
+- `Wait()`, `Pulse()`, `PulseAll()` csak a kritikus szakaszban használható
+  - `PulseAll()` öszes várakozó szál felébresztése
+  - `Pulse()` kritkikus szakszra várakozó szál felébresztése
+  - `Monitor.Enter()` -> *készenállók sora* -> lock -> `Monitor.Exit()`
+  -                                                ->`Monitor.Wait()` -> *várakozók sora* -> `Method.Pulse()`
+#### Termelő-fogyasztó probléma - `szinkronizált puffer`
+- beleteszünk a puferba, `pulse`-sal felébreszti az olvasót
+- kiolvasunk, ha nincs mit olvasni várakozik
+- ha több szál foglalja ugyanazt a kulcsot akkor egy logikai `flag` használatával lehet átállítani.
