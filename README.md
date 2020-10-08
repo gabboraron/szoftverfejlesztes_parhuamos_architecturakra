@@ -1,3 +1,7 @@
+> Hivatalos diasor: http://users.nik.uni-obuda.hu/vamossy/SZPE2018/
+>
+> Ez csak egy jegyzet a tárgyhoz!
+
 # Tartalom:
 - [Bevezetés](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#bevezetes)
 - [EA-GY1](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy1)
@@ -623,3 +627,122 @@ namespace interlocked_gyakorlas
 *Kérdés, hogy a fenti példában melyik ami a konstruktor két paramétere kzül a kapacitásnak megfelelő érték, ami a szemafor kritikus szakaszában.*
 
 **[VIZSGAKÉRDÉS]Folyamatok közötti szemaforok esetében a konstruktorban milyen lehetőségek vannak, miből kell osztály szintű metódust létrehozni, mikor nem kell?**
+
+#### többszálú program tervezése
+##### 1. Dekompozíció
+Függőségi gráf egy irányított gráf
+
+**Példák:**
+
+Sűrű mátrix vektorral szorzása
+> Sűrű mátrix: sok nem használt vagy nem fontos elem, pl 0 egy-egy sorban
+>
+> Párhuzamosításhoz azonos méretű részeket rendelünbk a mátrixból és vektorból (szemcsézettség) amivel szorzunk és összeadunk.
+
+Adatlekérdezés
+> ha egyszerre szeretnénk a *piros*, *2001*-es és *civic* márkájú autókat kigyűjteni akkor lehet párhuzamosan kivenni a külön-külön részfeladatokat, amiket  összeéselhetjük, metszhetjük, stb stb stb
+>
+> a különböző részfeladat felosztási lehetőségek közül a lehető legoptimálisabb kiválasztása viszont nem triviális
+
+###### párhuzamossági fok:
+- vezérlésről/függőségekről ad információt
+- meghatározza hány ágban tudunk tovább ténykedni, hogy hágny részfeladat meghatározható
+- átlagos párhuzamossági fok`teljes idő/kritikus út`
+- kritikus út meghatározása: maximum érték a gráf csúcsaiban szereplő értékek összege egy-egy leghozszzabb, számítható úton
+
+###### kölcsönhatási gráf:
+- feldolgozandó adatokról ad információt
+- irányítatlan gráf
+- mátrix reprezentáció
+
+###### dekompozíciós módszerek
+- adat dekompozíció
+- rekurzív dekompozíció - *feladat dekompozíció*
+- felderítő dekompozíció - *feladat dekompozíció*
+- spekulatív dekompozíció - *feladat dekompozíció*
+- hibrid dekompozíció
+
+###### Rekurzív dekompozíció
+> pl: Quicksort
+>
+> ![quick sort](https://www.geeksforgeeks.org/wp-content/uploads/gq/2014/01/QuickSort2.png)
+
+###### output adat dekompozíció
+> két `nxn`mátrix , A és B szorzat eredménye C, az eredméyn mátrix négy részre s osztható
+> ![mátrix dekompozíció](https://d2vlcm61l7u1fs.cloudfront.net/media%2F2ed%2F2ed6b691-d84e-4f51-8ba6-6715ce5da13a%2FphpR5Whcs.png)
+
+**Áruházak felosztása, hogya vásárló több helyre menjen**:
+
+> - tranzakciós adatbázisokban cikkhalmazok gyakoriságának meghatározása, output szerint particionálás
+> - van egy lista amit a vásárló szeet venni
+> - van egy lista amit mi szeretnénk eladni
+> ![áruházmodell](https://slideplayer.com/slide/4914294/16/images/22/Example%3A+Database+Transaction.jpg)
+
+###### Input adat dekompozíció
+Az előző áruházas modell, csak fordítva, azt részesítsük előnyben amit eladni szeretnénk
+
+###### Felderítő dekompozíció
+Olyan sázmítások dekompozíciója ahol a megoldás állapottérben történő keresésekhez kapcsolódik. Leírása álllapotterekkel történik. különböző lehetéses követő lépések mint önálló feladatokat vizsgálunk.
+> **Anomáliák a számításban**
+>
+> felderítő dekompozíció esetében a dekompozíciós technika megváltoztathatja a munkamennyiséget akár megnövelheti akár csökkentheti azt. *Nem biztos, hogy mind hasznons munka!*
+
+###### Spkulatív dekompozíció
+diszkrét események szimulációjára használatos, 
+- idő szerint eseménylista a központi adatstrukltúra
+- események idő szerinti sorrendben kerlülnek beillesztésre
+- csak spekulációval párhuzamosítható
+- állapot visszaállítási extra feladatot követel
+**[hf]: mi a különbség a fentiek között
+
+#### `System.Threading.ThreadPool` osztály
+fájl: http://users.nik.uni-obuda.hu/vamossy/SZPE2018/01%20-%20P%C3%A1rhuzamos%20programoz%C3%A1s%20.NET%20k%C3%B6rnyezetben.pdf
+> Gyakran ismétlődő rövid ideig tartó erősen párhuzamos művelete
+> 
+> Használatával megtakarítható az aprólékos munka.
+
+```C#
+
+```
+
+#### `System.Threading.BackgroundWorker` osztály
+```
+UI szál                 Háttérszál
+ |                          |
+ | - RunWorkerAsnc()        |
+ |                          | - DoWork()
+ |                          | - ReportProgress()
+ | - ProgressChanged        |
+ | - CancelAsync()          |
+ |                          | - CancellationPending?
+ | - RunWorkerCompleted()   
+```
+- `RunWorkerAsync()`            - háttérszál indítása
+- `CancelAsync()`               - háttérszál leállítása
+- `ReportProgress`              - Háttérszál folyamatjelzése
+- `IsBusy`                      - Háttérszál aktív-e  
+- `CancellationPending`         - leállítás folyamatban
+- `WorkerSupportsCancellation`  - kérés esetén a háttérszál idő előtti leállítása
+
+```C#
+static BackgroundWorker bw;
+static void Main()
+{
+bw = new Backgroundworker(),
+bw.WorkerReportsProgress = true;
+bw.WorkerSupportsCancellation = true;
+bw.DoWork += bw_DoWork;
+bw.ProgressChanged += bw_ProgressChanged;
+bw.RunWorkerCompleted +=bw_RunWorkerCompleted;
+
+bw.RunWorkerAsync("Hi worker");
+
+Console.Write("press enter to cancel next 5 sec");
+Console.Readline();
+if(bw.IsBusy
+```
+
+2. kezdeti felosztás
+3. kommunikáció
+4. öszevont felahasználás
+5. végleges program
