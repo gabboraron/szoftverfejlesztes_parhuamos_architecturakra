@@ -495,3 +495,131 @@ Ezekre megoldás a `Monitor` osztály, a háttérben a `lock` szintén ezt haszn
 - beleteszünk a puferba, `pulse`-sal felébreszti az olvasót
 - kiolvasunk, ha nincs mit olvasni várakozik
 - ha több szál foglalja ugyanazt a kulcsot akkor egy logikai `flag` használatával lehet átállítani.
+
+### EA-GY5
+#### Kölcsönös kizárás `interlocked` osztállyal
+> Egyes egyszerű műveletek oszthatatlan végrehajtását biztosítja (igen gyors). 
+
+.NET osztály: `System.Threading.Interlocked`
+- `Add()` - 32/64b hozzáadása egészként változóhoz
+- `CompareExchange()` - hivatkozott változó értékének 
+- `Decrement()`,`Increment()` - A hivatkozott változó értékének csökkentése, illetve növelése 1-gyel
+- `Exchange()` - A hivatkozott változó értékének beállítása és az eredeti érték visszaadása
+- `Read()` - hivatkozott 64 bites változó értékének kiolvasása (32 bites rendszeren is atomi műveletként)
+```C#
+static long sum; //non atomic on 32 bit CPU
+static void Main()
+{
+sum = 0; //non-atomic on 32-bit CPU
+Interlocked.Increment(ref sum);//1
+Interlocked.Decrement(ref sum);//0
+
+Interlocked.Add(ref sum, 3);//3
+Console.Writeline(Interlocked.Read(ref sum)); //3
+Console.Writeline(sum); //10
+
+Console.Writeline(Interlocked.CompareExchange(ref sum, 123, 10)); //10
+Console.Writeline(sum); //123
+Console.Readline();
+}
+```
+
+#### `Mutex`
+**!Megj:** kifejezetteen foylmatok közötti szinkronizációra való, egy folymaton belül a `lock` használatos!
+
+> 1. példányosítani kell
+> 2. `WaitOne()` és `ReleaseMutex()` hasznlata
+>     - `WaitOne()` - kezdete
+>     - `ReleaseMutex()` - vége
+> - `name` paraméter egyedi lehet és akkor az alapján azonosítható, hogy mikor melyik `mutex`ről beszélünk
+> - `GetCurrentProcess()` és `GetProcess()`a processek azonosításában segíhet
+```C#
+using System;
+using System.Threading;
+
+namespace interlocked_gyakorlas
+{
+    class Program
+    {
+        static Mutex mutex = new Mutex(false, "albahari OneAtTimeDemo"); // második paraméter a `mutex` neve amit vizsgál, hogy létrejött-emár hasonló
+static void Main()
+        {
+            if (!mutex.WaitOne(TimeSpan.FromSeconds(3), false))
+            {
+                Console.WriteLine("another instance in use");
+                return;
+            }
+            try
+            {
+                Console.WriteLine("running, press enter to exit");
+                Console.ReadLine();
+            }
+            finally { mutex.ReleaseMutex(); }
+        }
+    }
+}
+```
+
+Másik példa, `Main`en belüli `mutex` definiálással:
+```C#
+using System;
+using System.Threading;
+
+namespace interlocked_gyakorlas
+{
+    class Program
+    {
+        static void Main()
+        {
+            bool first;
+            Mutex mutex = new Mutex(false, "albahari OneAtTimeDemo", out first); // második paraméter a `mutex` neve amit vizsgál, hogy létrejött-emár hasonló
+            if (!first) //most hoztuk létre a mutexet vagy már egy másik program létrehozta?
+            {
+                Console.WriteLine("another instance in use");
+                return;
+            }
+            else
+                try
+                {
+                    Console.WriteLine("running, press enter exit");
+                    Console.ReadLine();
+                }
+                finally { mutex.ReleaseMutex(); }
+        }
+    }
+}
+```
+
+#### `.Semaphore` osztály
+itt is használhatóak:
+- `WaitOne()` és `Release()`
+- `Thread.Sleep()`-el várakozunk
+```C#
+using System;
+using System.Threading;
+
+namespace interlocked_gyakorlas
+{
+    class Program
+    {
+        static Semaphore s = new Semaphore(3, 3); //első érték: elérhetőek száma, hogy a tlejes kapacitásban hány elérhető; a második érték a kapacitás
+        static void Main()
+        {
+            for (int i = 1; i <= 5; i++) new Thread(Enter).Start(i);
+        }
+
+        static void Enter(object id)
+        {
+            Console.WriteLine(id + " wants to enter");
+            s.WaitOne();
+            Console.WriteLine(id + " is in!");
+            Thread.Sleep(1000 * (int)id);
+            Console.WriteLine(id + " is leaving");
+            s.Release();
+        }
+    }
+}
+```
+*Kérdés, hogy a fenti példában melyik ami a konstruktor két paramétere kzül a kapacitásnak megfelelő érték, ami a szemafor kritikus szakaszában.*
+
+**[VIZSGAKÉRDÉS]Folyamatok közötti szemaforok esetében a konstruktorban milyen lehetőségek vannak, miből kell osztály szintű metódust létrehozni, mikor nem kell?**
