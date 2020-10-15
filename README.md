@@ -500,7 +500,7 @@ Ezekre megoldás a `Monitor` osztály, a háttérben a `lock` szintén ezt haszn
 - kiolvasunk, ha nincs mit olvasni várakozik
 - ha több szál foglalja ugyanazt a kulcsot akkor egy logikai `flag` használatával lehet átállítani.
 
-### EA-GY5
+### EA-GY 5
 #### Kölcsönös kizárás `interlocked` osztállyal
 > Egyes egyszerű műveletek oszthatatlan végrehajtását biztosítja (igen gyors). 
 
@@ -746,3 +746,108 @@ if(bw.IsBusy
 3. kommunikáció
 4. öszevont felahasználás
 5. végleges program
+
+### EA-GY 6
+**Dinamikus programozás párhuzamosításssal**
+fájl: https://users.nik.uni-obuda.hu/vamossy/SZPE2018/09-10%20-%20Dinamikus%20programoz%c3%a1s%20p%c3%a1rhuzamos%c3%adt%c3%a1ssal.pdf
+
+> **dinamikus programozás**: optimalizációs problémák megoldása, csomagolási, string kezelési probléma
+> - problémákat rész problémákra osztjuk
+>   - azokat is tovább bontjuk alapesetig, aminek triviális megoldása van
+> - a részfeladatok megoldásait eltároljuk
+
+Példa: útkeresés
+- hurokmentes, irányított gráfban a legrövidebb út
+- *i*,*j* csomópontot összekötő él költsége *c(i,j)*
+- *n* csomópontot tartalmaz a gráf *0,1,...n-1* és az *i* csomópontból a *j* csomópontba akkor vezet él, ha *i<j* A *0* csomópont a forrás és az *n-1* a cél.
+- ha 0 és 4 csomópont között nézzük akkor: *f(4) = min{f(3)+c(3,4),f(2)+c(2,4)}* akkor meg kell nézzük az egy csomópontba bemenő élek értékeit.
+
+> #### soros egyszerű argumentumú példák:
+>
+> ***legrövidebb út probléma többszintes gráfon***
+> - a gráf súlyozott, több szintű, szintek száma *r+1*, minden szinten *n* csomópont van, és minden csomópont az *i*. szintről az *i+1* összes csomópontjáról. A *0*. és *r*. csak egy csomópontot tartalmaz.
+> 
+> ![hátizsák gráf](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra/blob/master/0-1hatizsak_problema.png)
+>
+> szintenként meghatározzuk a minimumot, az összes lehetésges esetet megviszgálva, de a két szint közti szakaszokat is beleszámolva és ezen szintek közti minimumot is meghatározzuk
+
+> ***0/1 típusú hátizsák probléma***
+> - adott *S* halmaz, *n* elemmel és egy súlyhatár *c*, minden *i* elemnek van egy *pi* egész értéke és egy *wi* egész súlya.
+> - most nem fogallkozunk elemek darabolásával
+> - cél olyan elemek  kiválasztása, hogy az összérték maximális legyen de az összsúy kisebb legyen mint *c*
+> - többféle megközelítés lehet
+>   - mohó, ahol legnagyobb értékűt használjuk 
+>   - dinamikus megközelítés, ahol első *i* elem figyelembe vételével, ahol maximális súlyt alkalmazunk, *x*-et, így kapjuk *F[i,x]*-et ahol ha *wi>x* akkor *i* elem meghaladja a súlyhatárt és nem hozzávehető, és ha a legjobb *Si-1* részhalmazhoz ha jön újabb *i* elem akkor *x-wi* nem eredményez túl nagy súly növekedést
+> ```C#
+> Algorithm 0-1Knapsack(S, c):
+>   Input: S halmaz elemei pi értékkel, wi súllyal; valamint a max. súly c
+>   Output: a legjobb részhalmaz értéke (F[n, c]), hogy teljesül: összsúly ≤ c
+>   
+>   for x <- 0 to c do
+>     F[0, x] <- 0
+>     for i <- 0 to n do
+>       F[i, 0] <- 0
+>     for i <- 0 to n do
+>       for x <- 0 to c do
+>         if wi <= x
+>           F[i, x] <- max(F[i - 1, x], F[i - 1, x - wi] + pi)
+>         else
+>           F[i, x] <- F[i - 1, x]
+> ```
+> 
+> *n=4*, *c=5* és az alábbi elemek esetén:
+> ```
+>  i    wi    pi
+>  1    2     3
+>  2    3     4
+>  3    4     5
+>  4    5     6
+> ```
+> - létrehozunk egy *nxc* méretű táblát, így a soros futási idő ezzel arányos
+
+#### `eveentWaitHandle`
+```C#
+static EventWaitHandle wh = new AutoResetEvent(false); //signalozott, vagy ne msiganlozott állapotban van, a kapu nyitva van-e
+        
+        static void Main(string[] args)
+        {
+            new Thread(Waiter).Start();
+            Thread.Sleep(1000);
+            wh.Set();
+        }
+
+        static void Waiter()
+        {
+            Console.WriteLine("Waiting...");
+            wh.WaitOne();//signalra várakozik
+            Console.WriteLine("Notified");
+        }
+```
+
+#### Lekghosszabb közös részsorozat
+Adott két részsorozat, *X* és *Y*, *pl:X = <c,a,d,b,r,z> és Y=<a,s,b,z>, leghosszabb közös részsorozata X és Y-nak: <a,b,z>*.
+- *i* az *X* eslő *i* eleme
+- *j* az *Y* eslő *j* eleme
+
+Rekurzív kifejezés:
+- 0 ha i = 0 vagy j=0
+- F[i-1,j-1]+1   ha i,j>0 és xi=yj
+- max{f[i,j-1],F[i-1,j]} ha i,j>0 és xi != yj
+
+1. Kiszámoljuk a két dimenziós F táblát sor-oszlop sorrendben
+2. átlós csomópontok mind új részprroblémát szülnek
+3. mindig létrehozunk egy plusz nulladik sort és oszlopot kinullázva
+4. az előző sorból a tőle eggyel balra eső elemhez hozzáadunk egyet ha egyezőség van
+5. az így kapott értékek mindig az addig eső részsorozatokban lévő hasonló elemek számát adja meg
+6. 
+```Text
+    H E A G A W G H E E
+  0 0 0 0 0 0 0 0 0 0 0
+P 0 0 0 0 0 0 0 0 0 0 0
+A 0 0 0 1 1 1 1 1 1 1 1
+W 0 0 0 1 1 1 2 2 2 2 2
+H 0 1 1 1 1 1 2 2 3 3 3
+E 0 1 2 2 2 2 2 2 3 4 4
+A 0 1 2 3 3 3 3 3 3 4 4
+E 0 1 2 3 3 3 3 3 3 4 5
+```
