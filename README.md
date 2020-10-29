@@ -25,7 +25,29 @@
 - [EA-GY2](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy2)      
 - [EA-GY3](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy3)
  - [Szinkronizáció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szinkroniz%C3%A1ci%C3%B3)
-
+- [EA-GY4](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy4)
+  - [`monitor` osztály](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#monitor-oszt%C3%A1ly)
+- [EA-GY5](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy-5)  
+  - [kölcsönös kizárás `interloicked`](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#k%C3%B6lcs%C3%B6n%C3%B6s-kiz%C3%A1r%C3%A1s-interlocked-oszt%C3%A1llyal)
+  - [`mutex`](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#mutex)
+  - [`.Semaphore` osztály](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#semaphore-oszt%C3%A1ly)
+  - [többszálú program tervezése](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#t%C3%B6bbsz%C3%A1l%C3%BA-program-tervez%C3%A9se)
+  - [dekompzíció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#1-dekompoz%C3%ADci%C3%B3)
+    - [párhuzamossági fok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#p%C3%A1rhuzamoss%C3%A1gi-fok)
+    - [kölcsönhatási gráf](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#k%C3%B6lcs%C3%B6nhat%C3%A1si-gr%C3%A1f)
+    - [dekompozíciós módszerek](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#dekompoz%C3%ADci%C3%B3s-m%C3%B3dszerek)
+    - [rekurzív dekompozíció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#rekurz%C3%ADv-dekompoz%C3%ADci%C3%B3)
+    - [output adat dekompozíció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#output-adat-dekompoz%C3%ADci%C3%B3)
+    - [input adat dekompozíció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#input-adat-dekompoz%C3%ADci%C3%B3)
+    - [felderítő dekompozíció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#felder%C3%ADt%C5%91-dekompoz%C3%ADci%C3%B3)
+    - [spekulatív dekompozíció](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#spkulat%C3%ADv-dekompoz%C3%ADci%C3%B3)
+   - [System.Threading.ThreadPool osztály](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#systemthreadingthreadpool-oszt%C3%A1ly)
+   - [System.Threading.BackgroundWorker osztály](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#systemthreadingbackgroundworker-oszt%C3%A1ly)
+- [EA-GY6](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy-6)
+  - [eventwaithandle](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#eveentwaithandle)
+  - [Lekghosszabb közös részsorozat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#lekghosszabb-k%C3%B6z%C3%B6s-r%C3%A9szsorozat)
+- [EA-GY7 - GPU programozás 1.]()  
+  - [ `C` kód `CUDA`sítása]()
 ## Bevezetés
 > Párhuzamos programozáshoz a Neumann architectúrás gépeken szükséges a programnyelv kifejezett támogatása a számítási feladatok egymással egyidőben való részfeladatokra bontására és a számítás elvégzésére közel párhuzamosítva.
 >
@@ -851,3 +873,82 @@ E 0 1 2 2 2 2 2 2 3 4 4
 A 0 1 2 3 3 3 3 3 3 4 4
 E 0 1 2 3 3 3 3 3 3 4 5
 ```
+
+### EA-GY7 - GPU programozás 1.
+> hivatalos anyag: http://szfi.nik.uni-obuda.hu/elearning/app/
+>
+> **Ha online szeretnénk futtatni** pl NVIDIA GPU hiányában:
+> 1. https://colab.research.google.com
+> 2. `file`>`new notebook`
+> 3. `%%writefile first.cu` parancsot fűzünk a kód elejére -> kiíródik a `first.cu` fájlba
+> 4. `!nvcc first.cu -o first` parancsal lefordítjuk
+> 5. `!./first` parancsal futtathatjuk a parancsot
+>
+> beállítások: `edit` > `notebook settings` > `GPU`
+
+
+#### `C` kód `CUDA`sítása
+> Egy vektor elemeit megszorozzuk kettővel
+
+`CUDA` verzió **1** szállal
+```CUDA
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+#include "<stdio.h>"
+
+int A[] = {1,2,3,4,5}; 
+__devcie__ int dev_A[5];
+
+__global__ voiod szorzas(){
+  for(int i=0; i<5; i++)
+   dev_A[i] *= 2;
+}
+
+int main(){
+  cudaMemcpyToSymbol(dev_A, A, 5*sizeof(int)); //CPU oldalról GPU oldalra másol //hova, honnan, méret
+  szorzas<<<1,1>>>();//blokkok,szálak száma
+  cudaMemcpyFromSymbol(A, dev_A, 5*sizeof(int)); //GPU oldalról CPU oldalra másol
+  
+  for(int i=0;i<5;i++)
+    printf("A[%d]=%d\n", i,A[i]);
+}
+```
+
+`CUDA` verzió **5** szállal
+```CUDA
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+#include "<stdio.h>"
+
+int A[] = {1,2,3,4,5}; 
+__devcie__ int dev_A[5];
+
+__global__ voiod szorzas(){
+  int i = threadIdx.x;
+   dev_A[i] *= 2;
+}
+
+int main(){
+  cudaMemcpyToSymbol(dev_A, A, 5*sizeof(int));
+  szorzas<<<1,5>>>(/*ha lenne paraméter itt adóda át, de ugyanaz adódik át az összes szálnak!*/);//blokkok,szálak száma
+  cudaMemcpyFromSymbol(A, dev_A, 5*sizeof(int));
+  
+  for(int i=0;i<5;i++)
+    printf("A[%d]=%d\n", i,A[i]);
+}
+```
+
+#### típusok/kulcsszavak
+**vektor típusok:**
+- `char1`, `uchar1`...`char4`, `uchar4`...
+- `short1`, `ushort1`... `short4`, `ushort4`...
+- `int...`
+- `long...`
+- `float...`
+ahol az `int4` a 4 elemű `int` vektor
+
+**`dim3`** - több dimenziós adatok tárolására
+
+- **`__device__`** - egy olyan fv elé kell ami GPU-n fut
+- **`__global__`** - belépési pont GPU-ra, azaz CPU oldalrl elindítható
+
