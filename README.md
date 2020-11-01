@@ -49,8 +49,11 @@
 - [EA-GY7 - GPU programozás 1.](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy7---gpu-programozás-1)  
   - [ `C` kód `CUDA`sítása](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#c-kód-cudasítása)
   - [típusok/kulcsszavak](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#típusokkulcsszavak)
-  - [CUDA könyvtárak]()
-  
+  - [CUDA könyvtárak](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#cuda-könyvtárak)
+  - [CUDA errorok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#cuda-errorok)
+  - [Szálak és blokkok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szálak-és-blokkok)
+    - [Substring keresési feladat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#substring-keresési-feladat)
+- [EA-GY7 - GPU blokkok és szálak]()  
 ---
 
 ## Bevezetés
@@ -1114,3 +1117,35 @@ printf("GPU result NxM synchronized: %d\n",pos);
 
 ```
 
+### EA-GY7 - GPU blokkok és szálak
+
+> Rögzített, hogy egy blokkon belül hány szál indítható maximum: az újabb verziókban `1024`. 
+> 
+> **A blokkok közötti kommunikáció/adatcsere/szinkronizáció nem létezik!**
+>
+> ![streaming multiprocesszor VS core](https://www.researchgate.net/profile/Stamatios_Sotiropoulos/publication/236666656/figure/fig1/AS:299544987357185@1448428498422/Typical-NVIDIA-GPU-architecture-The-GPU-is-comprised-of-a-set-of-Streaming.png)
+> A GPU-n belül a streaming processor futtat több blokkot
+> 
+> pl:
+> ```CUDA
+> //100 000 szál létrehozásához használnunk kell 
+> //100 blokkot
+> //blokkonként 1000 szálat
+> 
+> kernel<<<100,1000>>>...
+> 
+> //ha kevés a streaming multiprocesszor, akkor
+> //amint egy blokknyi szál végzett a feladatával akkor
+> //a streamingmultiprocesszor befejezi a futtatását, és kicseréli a következő blokkra
+> //ezért a futtatás nem lesz sem pont párhuzamos, sem pont egyidejű
+> //tehát ebben az esetben 100 db blokk fog egymástól teljesen függetlenül futtatni 1000 db szálat
+> ```
+ 
+#### Több dimenziós blokkok
+> Létrehozhatunk több dimenziós blokkokat amik a háttérben több szálat futtatnak gyakorlatilag
+>
+> ![több dimenziós szálak](https://codingbyexample.com/wp-content/uploads/2018/12/gridWBlock-1014x1024.png)
+>
+> ```CUDA
+> kernel<<<dim3(2,2),dim3(2,2)>>>
+> ```
