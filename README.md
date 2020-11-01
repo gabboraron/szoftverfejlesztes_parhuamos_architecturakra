@@ -46,8 +46,13 @@
 - [EA-GY6](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy-6)
   - [eventwaithandle](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#eveentwaithandle)
   - [Lekghosszabb közös részsorozat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#lekghosszabb-k%C3%B6z%C3%B6s-r%C3%A9szsorozat)
-- [EA-GY7 - GPU programozás 1.]()  
-  - [ `C` kód `CUDA`sítása]()
+- [EA-GY7 - GPU programozás 1.](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy7---gpu-programozás-1)  
+  - [ `C` kód `CUDA`sítása](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#c-kód-cudasítása)
+  - [típusok/kulcsszavak](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#típusokkulcsszavak)
+  - [CUDA könyvtárak]()
+  
+---
+
 ## Bevezetés
 > Párhuzamos programozáshoz a Neumann architectúrás gépeken szükséges a programnyelv kifejezett támogatása a számítási feladatok egymással egyidőben való részfeladatokra bontására és a számítás elvégzésére közel párhuzamosítva.
 >
@@ -949,6 +954,163 @@ ahol az `int4` a 4 elemű `int` vektor
 
 **`dim3`** - több dimenziós adatok tárolására
 
-- **`__device__`** - egy olyan fv elé kell ami GPU-n fut
-- **`__global__`** - belépési pont GPU-ra, azaz CPU oldalrl elindítható
+- **`__device__`** - egy olyan fv elé kell ami GPU-n fut és másik GPU-n belüli függvényből lehet meghívni
+- **`__global__`** - belépési pont GPU-ra, azaz CPU oldalról elindítható
+
+```CUDA
+__global__ void vectorMul(float *A)
+{
+  int i = threadidx.x;
+  A[i] = A[i]*2;
+}
+```
+
+#### CUDA könyvtárak
+> Ezek előre megírt számítások, pl mátrix sázmítások, Furier transzformációk
+> - szinkronizációs műveletek
+> - atomi műveletek
+
+#### CUDA errorok
+> Az errort generáló függvények `cudaError_t` típusúak.
+>
+> Minden egyes hívásnál ellenőrizni kell, mert nincs egyéb visszajelzés a hibáról.
+
+#### Szálak és blokkok
+A szálak blokkokba vannak szervezve, ezért:
+- `blockIdx` - így lehet lekérni egy blokk azonosítót
+- `blockDim` - egy blokk méretét adja meg
+- `gridDim` - összesen hány ilyen blokk van
+
+
+**Képernyőn kívűl más interfész nincs!**
+```CUDA
+//>=CC2.0
+
+__global__ static void VectorShift(float *devA){
+   float tmp = devA[threadIdx.x];
+   __syncthreads();
+   printf("%f%f\n", threadIdx.x, tmp);
+   devA[threadIdx.x+1] = tmp;
+}
+```
+
+**Kernel indítás**
+```CUDA
+__global__ void kernelSample(float* A, int b)
+{
+   //...
+}
+
+//...
+
+float* A = ...
+//másolás GPU-ra
+
+//kernel hívás
+kernelSample <<<1,200>>>(A,B) // <<<blokkok_szama,szalak_szama_a_blokkon>>>(parameter_A,parameter_B)
+
+//visszakapott eredmény másolása GPU-ról
+```
+
+![CUDA threading](https://www.microway.com/wp-content/uploads/CUDA-GridBlockThread-Structure.png)
+
+`CC3.0` utáni verzióknál a GPU szálak is indíthatnak szálakat
+
+-> kernel block szinkronizáció: `void __syncthreads()` -> ebben az esetben minden szálnak hozzá kell férnie ugyanahhoz a `__syncthreads()`-hez pl ne dugjuk el egy `if`be, vagy hasonlók **!**
+
+##### Substring keresési feladat
+```CUDA
+//két char vektor:
+// szo:     [s,z,o] M=3 
+// mondat:  [a,s,z,i,s,z,o,k] N=8
+// talalat: [-1] //a szo kezdetének kezdőindexe
+// N-M+1 szálat használhatunk
+// vagy (N-M+1)*M 
+
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+#include <stdio.h>
+
+#define N 20
+#define M 3
+
+char text[N+1] = "Ez egy hosszú szöveg";
+char word[M+1] = "szo";
+
+__device__ char dev_text[N];
+__device__ char dev_word[M];
+__device__ int dev_pos;
+
+//
+__global__ void findWordSingle()
+{
+  for(int i = 0; i<=N-M; i++)
+  {
+     int j = 0;
+     while(j<M && dev_text[i+j] == dev_word[j])
+       j++;
+     if(j == M) 
+       dev_pos = i;
+  }
+}
+
+//
+__global__ void findWordN()
+{
+  int j = 0;
+  while(j<M && dev_text[threadIdx.x + j] == dev_word[j])
+    j++;
+  if(j== M)
+    dev_pos = threadIdx.x;
+}
+
+//
+__device__ char dev_temp[N];
+__global__ void findWordNMM()
+{
+   if(threadIdx.y == 0)
+     dev_temp[threadIdx.x] = 0;
+   
+   __syncthtread();
+   if(dev_text[threadIdx.x +threadIdx.y] != dev_word[]threadIdx.y)
+     dev_temp[threadIdx.x] = 1;
+     
+   __syncthtread();  
+   if(threadIdx.y == 0)
+     if(dev_temp[threadIdx.x] == 0)
+       dev_pos = threadIdx.x;
+}
+
+int main(){
+  int pos = -1;
+  for(int  i = 0; i<=N-M;i++){
+    int j = 0;
+    while(j<M && text[i+j] == word[j])
+      j++;
+    if(j == M)
+      pos = i;
+  }
+}
+
+cudaMemcpyToSymbol(dev_text, text, N*sizeof(char));
+cudaMemcpyToSymbol(dev_word, word, M*sizeof(char));
+cudaMemcpyToSymbol(dev_pos, &npos, sizeof(int));
+
+findWordSingle<<<1,1>>>();
+cudaMemcpyFromSymbol(&pos, dev_pos, sizeof(int));
+printf("GPU result 1: %d\n",pos);
+
+findWordN<<<1,N-M+1>>>();
+cudaMemcpyFromSymbol(&pos, dev_pos, sizeof(int));
+printf("GPU result N: %d\n",pos);
+
+findWordNM<<<1,dim3(N-M+1,M)>>>();
+cudaMemcpyFromSymbol(&pos, dev_pos, sizeof(int));
+printf("GPU result NxM: %d\n",pos);
+
+findWordNM<<<1,dim3(N-M+1,M)>>>();
+cudaMemcpyFromSymbol(&pos, dev_pos, sizeof(int));
+printf("GPU result NxM synchronized: %d\n",pos);
+
+```
 
