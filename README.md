@@ -55,10 +55,10 @@
     - [Substring keresési feladat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#substring-keresési-feladat)
 - [EA-GY7 - GPU blokkok és szálak](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy7---gpu-blokkok-és-szálak)
   - [Több dimenziós blokkok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#több-dimenziós-blokkok)
-    - [Substring keresési feladat blokkokra optimalizálva]()
-  - [Blokkok közti kommunikáció `shared` memóriával]()
-    - [Szókereső feladat - vázlat]()
-    - [Rendezés feladat]()
+    - [Substring keresési feladat blokkokra optimalizálva](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#substring-keresési-feladat-blokkokra-optimalizálva)
+  - [Blokkok közti kommunikáció `shared` memóriával](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#blokkok-közti-kommunikáció-shared-memóriával)
+    - [Szókereső feladat - vázlat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szókereső-feladat---vázlat)
+    - [Rendezés feladat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#rendezés)
 ---
 
 ## Bevezetés
