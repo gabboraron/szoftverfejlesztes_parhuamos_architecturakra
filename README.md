@@ -53,7 +53,12 @@
   - [CUDA errorok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#cuda-errorok)
   - [Szálak és blokkok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#szálak-és-blokkok)
     - [Substring keresési feladat](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#substring-keresési-feladat)
-- [EA-GY7 - GPU blokkok és szálak]()  
+- [EA-GY7 - GPU blokkok és szálak](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#ea-gy7---gpu-blokkok-és-szálak)
+  - [Több dimenziós blokkok](https://github.com/gabboraron/szoftverfejlesztes_parhuamos_architecturakra#több-dimenziós-blokkok)
+    - [Substring keresési feladat blokkokra optimalizálva]()
+  - [Blokkok közti kommunikáció `shared` memóriával]()
+    - [Szókereső feladat - vázlat]()
+    - [Rendezés feladat]()
 ---
 
 ## Bevezetés
@@ -1069,7 +1074,7 @@ __global__ void findWordN()
 
 //
 __device__ char dev_temp[N];
-__global__ void findWordNMM()
+__global__ void findWordNM()
 {
    if(threadIdx.y == 0)
      dev_temp[threadIdx.x] = 0;
@@ -1079,6 +1084,22 @@ __global__ void findWordNMM()
      dev_temp[threadIdx.x] = 1;
      
    __syncthtread();  
+   if(threadIdx.y == 0)
+     if(dev_temp[threadIdx.x] == 0)
+       dev_pos = threadIdx.x;
+}
+
+//
+__global__ void findWordNMSync()
+{
+   if(threadIdx.y == 0)
+     dev_temp[threadIdx.x] = 0;
+   __syncthreads();
+   
+   if(dev_text[threadIdx.x + threadIdx.y] != dev_word[threadIdx.y])
+     dev_temp[threadIdx.x] = 1;
+   __syncthreads();
+   
    if(threadIdx.y == 0)
      if(dev_temp[threadIdx.x] == 0)
        dev_pos = threadIdx.x;
@@ -1149,3 +1170,193 @@ printf("GPU result NxM synchronized: %d\n",pos);
 > ```CUDA
 > kernel<<<dim3(2,2),dim3(2,2)>>>
 > ```
+> 
+> Kernelen belül blokk azonosítók haszánlata:
+> ```CUDA
+> __global__ void vectorMul(float* A, intN)
+> {
+>   int i = blockIdx.x*blockDim.x+threadIdx.x;
+>   if(i<N)
+>   { A[i]=A[i]*2; }
+> }
+>
+> float* A = ...
+> ... transferdata CPU -> GPU ...
+> vectorMul<<<4,250>>>(A,1000);
+> ... transferresults GPU -> CPU ...
+> ```
+
+**De mennyi szál és mennnyi blokk kell?**
+```CUDA
+blokk méret: BM = 10
+T szál
+blokkok száma = összes_szál_száma/blokk_méret = T/BM ha 10-el osztható számú szállal, egyébként:
+[(T-1)/BM]alsó egész + 1
+
+ T   blokk
+ 9     1
+ 10    1
+ 11    2 //mert 10 a blokk méret 
+```
+
+##### Substring keresési feladat blokkokra optimalizálva
+```CUDA
+#include "cuda_runtime.h"
+#include "device_launch_paramters.h"
+#include <stdio.h>
+#define N 10000
+#define BLOCK_SIZE 100
+
+int A[N];
+__device__ void szorzas(int mennyivel){
+  int i = blockIdx * blockDim.x + threadIdx.x;
+  dev_A[i] *= mennyivel;
+}
+
+int main(){
+  for(int i = 0; i< N; i++)
+    A[i] = i
+  cudaMemcpyToSymbol(dev_A, A, N*sizof(int));
+  int block_count = (N-1)/BLOCK_SIZE + 1;
+  szorzas<<<block_count,BLOCK_SIZE>>>(3);
+  cudaMemcpyFromSymbol(A, dev_A, N*sizeof(int));
+  for(int i=0; i<N; i++)
+    printf("A[%d]=%d\n",i,A[i])
+}
+```
+
+#### Blokkok közti kommunikáció shared memóriával
+
+A `shared` memória egy blokkon belüli közös memóriaterületet ad. `48 KB` memória nagyjából.
+`shared` memórián elérhető változó deklarálása:
+```CUDA
+__shared__ int a;
+```
+
+`devie memory` egy lassú de minden szál/blokk által látott memória terület ami kártya saját memóriája.
+```CUDA
+__device__ int y;
+```
+
+adatok másolása `devie memory`ból `shared`-re:
+```CUDA
+__device__ int y;
+__global__ void f(){
+   ...
+   int x;
+   __shared__ int z;
+   x = y;
+   z = 5;
+   z = y;
+}
+```
+
+##### Szókereső feladat - vázlat 
+```CUDA
+// szöveg: abcdefgh
+// szó:    xyz
+//
+// => szöveg mérete*szó mérete mennyiségű szál
+//
+//   abcdefgh
+//   xyz
+// 1 x==a  x==b  x==c  ...
+// 2 y==b  y==c  y==d  ...
+// 3 z==c  z==d  z==e  ...
+// => N-M+1 szál van
+// => érdemes bemásolni a szót és a szöveget is beolvasni a shared memóriába
+```
+
+##### Rendezés
+```CUDA
+// 3 8 7 1 2 9 4 1
+// N elem => N/2 szál
+// 2x és 2x+1. szálak összehasonlítása
+//
+// I. lépés
+// tömb elemek: 3  8  7  1  2  9  4  1
+//               \/    \/    \/    \/
+// szálak:        0     1     2    3
+//
+// II. lépés
+// tömb elemek: 3  8  1  7  2  9  1  4
+//                  \/    \/    \/    
+// szálak:           0     1     2    (3.-nem fut)
+//
+// III. lépés
+// tömb elemek: 3  1  8  2  7  1  9  4
+//               \/    \/    \/    \/
+// szálak:        0     1     2     3
+//
+// IV. lépés
+// tömb elemek: 1  3  2  8  1  7  4  9
+// 
+// ...
+//
+// (N/2 + N/2)*N/2 ~ O(N^2) művelet, de O(N) idő
+
+
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+#include <stdio.h>
+
+#define N 20
+#define M 3
+
+char text[N+1] = "Ez egy hosszú szöveg";
+char word[M+1] = "szo";
+
+__device__ char dev_text[N];
+__device__ char dev_word[M];
+__device__ int dev_pos;
+
+
+
+// x:0..N-M
+// y:0..M-1
+
+__global__ void findWordNMSyncShared()
+{
+   __shared__ char shr_text[N];
+   __shared__ char shr_word[M];
+   __shared__ char shr_temp[N]
+   
+   int i = threadIdx.x + threadIdx.y * blockDim.x;
+   if(i < N)
+      shr_text[i] = ev_text[i]
+   
+   if(theradIdx.x == 0)
+      shr_word[threadIdx.y] = dev_word[threadIdx.y];
+   
+   if(threadIdx.y == 0)
+     shr_temp[threadIdx.x] = 0;
+   __syncthreads();
+   
+   if(shr_text[threadIdx.x + threadIdx.y] != shr_word[threadIdx.y])
+     shr_temp[threadIdx.x] = 1;
+   __syncthreads();
+   
+   if(threadIdx.y == 0)
+     if(shr_temp[threadIdx.x] == 0)
+       dev_pos = threadIdx.x;
+}
+
+int main(){
+  int pos = -1;
+  for(int  i = 0; i<=N-M;i++){
+    int j = 0;
+    while(j<M && text[i+j] == word[j])
+      j++;
+    if(j == M)
+      pos = i;
+  }
+}
+
+cudaMemcpyToSymbol(dev_text, text, N*sizeof(char));
+cudaMemcpyToSymbol(dev_word, word, M*sizeof(char));
+cudaMemcpyToSymbol(dev_pos, &npos, sizeof(int));
+
+findWordNMSyncShared<<<1,dim3(N-M+1, M)>>>();
+cudaMemcpyFromSymbol(&pos, dev_pos, sizeof(int));
+printf("GPU result 1: %d\n",pos);
+```
