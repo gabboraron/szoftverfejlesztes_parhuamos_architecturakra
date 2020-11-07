@@ -1138,7 +1138,7 @@ printf("GPU result NxM synchronized: %d\n",pos);
 
 ```
 
-### EA-GY7 - GPU blokkok és szálak
+### EA-GY8 - GPU blokkok és szálak
 
 > Rögzített, hogy egy blokkon belül hány szál indítható maximum: az újabb verziókban `1024`. 
 > 
@@ -1360,3 +1360,15 @@ findWordNMSyncShared<<<1,dim3(N-M+1, M)>>>();
 cudaMemcpyFromSymbol(&pos, dev_pos, sizeof(int));
 printf("GPU result 1: %d\n",pos);
 ```
+
+### EA 9 - taskok és threadek
+#### Thread Class
+https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1
+
+#### ThreadPool Class
+![threadpool wiki](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Thread_pool.svg/1920px-Thread_pool.svg.png)
+https://docs.microsoft.com/en-us/dotnet/api/system.threading.threadpool?view=netcore-3.1
+
+#### Task Class
+https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netcore-3.1
+
