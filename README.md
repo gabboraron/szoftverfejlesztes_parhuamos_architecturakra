@@ -1372,3 +1372,11 @@ https://docs.microsoft.com/en-us/dotnet/api/system.threading.threadpool?view=net
 #### Task Class
 https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task?view=netcore-3.1
 
+### EA-GY10 - szálbiztos adatszerkezetek
+> https://docs.microsoft.com/en-us/dotnet/standard/collections/thread-safe/
+
+**Konkurens gyűjtemények:**
+-https://docs.microsoft.com/en-us/dotnet/api/system.collections.concurrent?view=net-5.0
+- `cocurentbag`
+- `ConcurrentDictionary`
+- `blockingCollections`
