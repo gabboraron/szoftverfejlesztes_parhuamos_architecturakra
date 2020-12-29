@@ -1,0 +1,24 @@
+3. témakör: Szinkronizáció alapjai
+----------------------------------
+(3Gyakorlat.sln)
+
+I. EmlekeztetoFeladatok20100325.doc fájlban kis feladatok: 
+- hangsúlyozni, hogy nem determinisztikus a sorrend: befolyásolja, hogy miként kap idõszeletet (0-1ThreadTest.csproj), 
+hány processzor van a gépben, cache - volatile (0-2MemoryBarrierVolatile.csproj); 
+- anonymous delegate használata szálfüggvényként; 
+- a szálmetódus nem közönséges függvény => kivételkezelés a metódusban
+
+
+II. Alapprobléma és szinkronizációs megoldások
+
+
+1. Alapprobléma: DataRace globális erõforráshoz hozzáférés írásra, versenyhelyzet (01MT03DataRaces.csproj)
+2. Kritikus szakasz Monitorral, Enter, Exit, miért finally ágba, szinkron objektum (02MT04Monitor.csproj)
+3. Kölcsönös kizárás lockkal, példány, vagy static lockkolás; mivel lockkoljunk (03Locks.csproj, 04LockStringBuilder.csproj)
+4. Hol legyen a lock-kolás (optimalizálás), holtpont (05RaceCondition.csproj - Feladat(4))
+5. Monitor. TryEnter használata - nem blokkoló szinkronizáció: contextus váltás redukálása (nincs, csak dián)
+6. ReaderWriterLock (06ReaderWriter.csproj)
+7. Atomi végrehajtás: atomi mûveletek, ref paraméter (07AtomicityInterlocked.csproj - Feladat(7))
+8. Mutex: konstruktorok, elnevezett mutexek - processzek közötti, kritikus szakasz, WaitOne, ReleaseMutex, (08MutexOneApplicationInstance.csproj - Feladat(5))
+9. Semaphore: kapacitás + hozzáférhetõ limit (09SemaphoreTest.csproj - Feladat(6)) 
+

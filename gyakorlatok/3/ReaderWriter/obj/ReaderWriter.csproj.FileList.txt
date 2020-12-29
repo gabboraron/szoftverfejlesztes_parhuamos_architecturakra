@@ -1,0 +1,5 @@
+bin\Debug\ReaderWriter.exe
+bin\Debug\ReaderWriter.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ReaderWriter.exe
+obj\Debug\ReaderWriter.pdb

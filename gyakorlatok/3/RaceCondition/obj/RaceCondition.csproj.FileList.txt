@@ -1,0 +1,5 @@
+bin\Debug\RaceCondition.exe
+bin\Debug\RaceCondition.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\RaceCondition.exe
+obj\Debug\RaceCondition.pdb

@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\SemaphoreTest.exe
+bin\Debug\SemaphoreTest.pdb
+obj\Debug\SemaphoreTest.exe
+obj\Debug\SemaphoreTest.pdb
