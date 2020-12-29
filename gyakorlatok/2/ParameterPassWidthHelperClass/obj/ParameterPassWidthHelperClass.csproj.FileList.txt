@@ -1,0 +1,5 @@
+bin\Debug\ParameterPassWidthHelperClass.exe
+bin\Debug\ParameterPassWidthHelperClass.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ParameterPassWidthHelperClass.exe
+obj\Debug\ParameterPassWidthHelperClass.pdb

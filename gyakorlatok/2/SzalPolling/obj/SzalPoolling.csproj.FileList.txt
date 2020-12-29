@@ -1,0 +1,5 @@
+bin\Debug\SzalPolling.exe
+bin\Debug\SzalPolling.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SzalPolling.exe
+obj\Debug\SzalPolling.pdb

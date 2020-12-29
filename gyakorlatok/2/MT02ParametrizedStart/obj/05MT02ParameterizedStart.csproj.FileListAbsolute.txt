@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT02ParametrizedStart\bin\Debug\MT02ParametrizedStart.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT02ParametrizedStart\bin\Debug\MT02ParametrizedStart.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT02ParametrizedStart\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT02ParametrizedStart\obj\Debug\MT02ParametrizedStart.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT02ParametrizedStart\obj\Debug\MT02ParametrizedStart.pdb

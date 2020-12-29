@@ -1,0 +1,29 @@
+2.témakör Folyamat és szálkezelés
+---------------------------------
+
+I. Folyamatmodell, ütemezés
+
+II. Szálak
+(2Gyakorlat.sln)
+
+System.Threading
+- Thread
+- ThreadPool
+- BackgroundWorker
+- aszinkron
+
+Thread osztály
+- konstruktor
+- ThreadStart
+- Start
+
+1. Szál indítása és képernyõre ír saját osztály static metódusa + Sleep (01FirstExample.csproj)
+2. Fõszál és munkaszál ír képernyõre (02MT01Start.csproj)
+3. Példánymetódus és static metódus, mint szálfüggvény (másik osztályé) (03ThreadMethodStaticANDInstance.csproj)
+4. Paraméterátadás OOP segédosztállyal + Join (04ParameterPassWidthHelperClass.csproj)
+5. Paraméterátadás: ParameterizedThreadStart + object típusú paraméter (05MT02ParameterizedStart.csproj)
+6. Paramétervisszakapás Callbackdelegate-tel: (06RetrievingDataWithCallbackMethod.csproj)
+7. Háttérszál indítása + Join, illetve nélküle: ki kell a hallgatónak próbálnia (csak a dián szerepel)
+8. Abort metódus + ResetAbort (07AbortTest.csproj)
+9. Prioritások, allapotátmeneti diagram, pollingozással állapot lekérdezés + Sleep(1) kisebb CPU terhelés (08ThreadPolling.csproj)
+10. ThreadPool metódusai és használata: összehasonlítás a Thread-es megoldással + [ThreadStatic] (09Thread_ThreadPool.csproj - Feladat(3))

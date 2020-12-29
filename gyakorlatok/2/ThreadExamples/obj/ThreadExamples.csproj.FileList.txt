@@ -1,0 +1,5 @@
+bin\Debug\ThreadExamples.exe
+bin\Debug\ThreadExamples.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ThreadExamples.exe
+obj\Debug\ThreadExamples.pdb

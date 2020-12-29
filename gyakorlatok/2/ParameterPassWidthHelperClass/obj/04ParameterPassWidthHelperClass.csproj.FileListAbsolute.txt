@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ParameterPassWidthHelperClass\bin\Debug\ParameterPassWidthHelperClass.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ParameterPassWidthHelperClass\bin\Debug\ParameterPassWidthHelperClass.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ParameterPassWidthHelperClass\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ParameterPassWidthHelperClass\obj\Debug\ParameterPassWidthHelperClass.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ParameterPassWidthHelperClass\obj\Debug\ParameterPassWidthHelperClass.pdb

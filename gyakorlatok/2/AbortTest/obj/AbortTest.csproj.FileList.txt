@@ -1,0 +1,5 @@
+bin\Debug\AbortTest.exe
+bin\Debug\AbortTest.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\AbortTest.exe
+obj\Debug\AbortTest.pdb

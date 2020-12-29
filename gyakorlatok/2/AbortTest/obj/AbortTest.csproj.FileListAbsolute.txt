@@ -1,0 +1,10 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\ProcessesAndThreads\AbortTest\bin\Debug\AbortTest.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\ProcessesAndThreads\AbortTest\bin\Debug\AbortTest.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\ProcessesAndThreads\AbortTest\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\ProcessesAndThreads\AbortTest\obj\Debug\AbortTest.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\ProcessesAndThreads\AbortTest\obj\Debug\AbortTest.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\AbortTest\obj\Debug\AbortTest.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\AbortTest\obj\Debug\AbortTest.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\AbortTest\bin\Debug\AbortTest.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\AbortTest\bin\Debug\AbortTest.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\AbortTest\obj\Debug\ResolveAssemblyReference.cache

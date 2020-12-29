@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\05RetrievingDataWithCallbackMethod\bin\Debug\05RetrievingDataWithCallbackMethod.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\05RetrievingDataWithCallbackMethod\bin\Debug\05RetrievingDataWithCallbackMethod.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\05RetrievingDataWithCallbackMethod\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\05RetrievingDataWithCallbackMethod\obj\Debug\05RetrievingDataWithCallbackMethod.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\05RetrievingDataWithCallbackMethod\obj\Debug\05RetrievingDataWithCallbackMethod.pdb

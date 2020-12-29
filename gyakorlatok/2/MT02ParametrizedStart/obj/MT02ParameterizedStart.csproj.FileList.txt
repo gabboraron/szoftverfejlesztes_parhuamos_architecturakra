@@ -1,0 +1,5 @@
+bin\Debug\MT02ParametrizedStart.exe
+bin\Debug\MT02ParametrizedStart.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\MT02ParametrizedStart.exe
+obj\Debug\MT02ParametrizedStart.pdb
