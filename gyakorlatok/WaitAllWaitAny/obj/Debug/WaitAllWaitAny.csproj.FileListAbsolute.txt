@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WaitAllWaitAny\obj\Debug\WaitAllWaitAny.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WaitAllWaitAny\obj\Debug\WaitAllWaitAny.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WaitAllWaitAny\bin\Debug\WaitAllWaitAny.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WaitAllWaitAny\bin\Debug\WaitAllWaitAny.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WaitAllWaitAny\obj\Debug\ResolveAssemblyReference.cache

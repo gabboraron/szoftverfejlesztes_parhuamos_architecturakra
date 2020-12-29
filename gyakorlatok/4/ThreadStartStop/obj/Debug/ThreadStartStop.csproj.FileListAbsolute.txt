@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\ThreadStartStop\bin\Debug\ThreadStartStop.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\ThreadStartStop\bin\Debug\ThreadStartStop.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\ThreadStartStop\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\ThreadStartStop\obj\Debug\ThreadStartStop.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\ThreadStartStop\obj\Debug\ThreadStartStop.pdb

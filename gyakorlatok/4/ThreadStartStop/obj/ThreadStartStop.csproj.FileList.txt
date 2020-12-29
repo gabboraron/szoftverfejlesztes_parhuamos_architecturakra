@@ -1,0 +1,5 @@
+bin\Debug\ThreadStartStop.exe
+bin\Debug\ThreadStartStop.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ThreadStartStop.exe
+obj\Debug\ThreadStartStop.pdb
