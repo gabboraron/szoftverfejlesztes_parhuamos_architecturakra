@@ -1,0 +1,5 @@
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_producerconsumer1\szpe_producerconsumer1\bin\Debug\szpe_producerconsumer1.exe.config
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_producerconsumer1\szpe_producerconsumer1\bin\Debug\szpe_producerconsumer1.exe
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_producerconsumer1\szpe_producerconsumer1\bin\Debug\szpe_producerconsumer1.pdb
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_producerconsumer1\szpe_producerconsumer1\obj\Debug\szpe_producerconsumer1.exe
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_producerconsumer1\szpe_producerconsumer1\obj\Debug\szpe_producerconsumer1.pdb

@@ -1,0 +1,6 @@
+C:\Users\hallgato\Desktop\TaskHelloWorld\TaskHelloWorld\bin\Debug\TaskHelloWorld.exe.config
+C:\Users\hallgato\Desktop\TaskHelloWorld\TaskHelloWorld\bin\Debug\TaskHelloWorld.exe
+C:\Users\hallgato\Desktop\TaskHelloWorld\TaskHelloWorld\bin\Debug\TaskHelloWorld.pdb
+C:\Users\hallgato\Desktop\TaskHelloWorld\TaskHelloWorld\obj\Debug\TaskHelloWorld.csprojResolveAssemblyReference.cache
+C:\Users\hallgato\Desktop\TaskHelloWorld\TaskHelloWorld\obj\Debug\TaskHelloWorld.exe
+C:\Users\hallgato\Desktop\TaskHelloWorld\TaskHelloWorld\obj\Debug\TaskHelloWorld.pdb

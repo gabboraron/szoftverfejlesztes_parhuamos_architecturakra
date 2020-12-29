@@ -1,0 +1,6 @@
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_KonyvtarMeret\01_ProducerConsumer\bin\Debug\01_ProducerConsumer.exe.config
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_KonyvtarMeret\01_ProducerConsumer\bin\Debug\01_ProducerConsumer.exe
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_KonyvtarMeret\01_ProducerConsumer\bin\Debug\01_ProducerConsumer.pdb
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_KonyvtarMeret\01_ProducerConsumer\obj\Debug\01_ProducerConsumer.csprojResolveAssemblyReference.cache
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_KonyvtarMeret\01_ProducerConsumer\obj\Debug\01_ProducerConsumer.exe
+c:\users\kerti\documents\visual studio 2012\Projects\szpe_KonyvtarMeret\01_ProducerConsumer\obj\Debug\01_ProducerConsumer.pdb
