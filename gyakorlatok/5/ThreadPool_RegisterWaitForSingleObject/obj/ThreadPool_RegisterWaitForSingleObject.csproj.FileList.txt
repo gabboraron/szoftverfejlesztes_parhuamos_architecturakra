@@ -1,0 +1,5 @@
+bin\Debug\ThreadPool_RegisterWaitForSingleObject.exe
+bin\Debug\ThreadPool_RegisterWaitForSingleObject.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ThreadPool_RegisterWaitForSingleObject.exe
+obj\Debug\ThreadPool_RegisterWaitForSingleObject.pdb

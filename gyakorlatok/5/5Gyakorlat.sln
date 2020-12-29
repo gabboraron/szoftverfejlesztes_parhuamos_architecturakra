@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03BackgroundWorker", "BackgroundWorker\03BackgroundWorker.csproj", "{DAC2FCA6-846A-4B49-97C3-B294E2D5898B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolingWaitHandleManualResetEvent", "PoolingWaitHandleManualResetEvent\PoolingWaitHandleManualResetEvent.csproj", "{48F32593-E153-4561-9F4C-D443644E17E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPool", "ThreadPool\ThreadPool.csproj", "{A60F4EA6-FDE0-4BCD-9AE3-5DFA74E0CBAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPool_RegisterWaitForSingleObject", "ThreadPool_RegisterWaitForSingleObject\ThreadPool_RegisterWaitForSingleObject.csproj", "{89D889EC-499C-4449-A5C8-EC3C9EBF0F5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01ThreadSafeCall2WindowsFormControls", "ThreadSafeCall2WindowsFormControls\01ThreadSafeCall2WindowsFormControls.csproj", "{DB2E6795-B4C8-4CF4-A651-C8D3AD81567C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02UsingBackgroundWorker", "UsingBackgroundWorker\02UsingBackgroundWorker.csproj", "{0C5A8A34-BD2E-4F5B-81DA-D3858C0CB3EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAC2FCA6-846A-4B49-97C3-B294E2D5898B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC2FCA6-846A-4B49-97C3-B294E2D5898B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC2FCA6-846A-4B49-97C3-B294E2D5898B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC2FCA6-846A-4B49-97C3-B294E2D5898B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F32593-E153-4561-9F4C-D443644E17E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F32593-E153-4561-9F4C-D443644E17E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F32593-E153-4561-9F4C-D443644E17E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F32593-E153-4561-9F4C-D443644E17E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60F4EA6-FDE0-4BCD-9AE3-5DFA74E0CBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60F4EA6-FDE0-4BCD-9AE3-5DFA74E0CBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60F4EA6-FDE0-4BCD-9AE3-5DFA74E0CBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60F4EA6-FDE0-4BCD-9AE3-5DFA74E0CBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D889EC-499C-4449-A5C8-EC3C9EBF0F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D889EC-499C-4449-A5C8-EC3C9EBF0F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D889EC-499C-4449-A5C8-EC3C9EBF0F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D889EC-499C-4449-A5C8-EC3C9EBF0F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2E6795-B4C8-4CF4-A651-C8D3AD81567C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2E6795-B4C8-4CF4-A651-C8D3AD81567C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2E6795-B4C8-4CF4-A651-C8D3AD81567C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2E6795-B4C8-4CF4-A651-C8D3AD81567C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C5A8A34-BD2E-4F5B-81DA-D3858C0CB3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C5A8A34-BD2E-4F5B-81DA-D3858C0CB3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C5A8A34-BD2E-4F5B-81DA-D3858C0CB3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C5A8A34-BD2E-4F5B-81DA-D3858C0CB3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80B933F0-176E-4E83-93EE-4891979A87DC}
+	EndGlobalSection
+EndGlobal

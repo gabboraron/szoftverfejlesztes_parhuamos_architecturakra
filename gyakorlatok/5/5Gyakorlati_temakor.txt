@@ -1,0 +1,11 @@
+5.témakör Windows aszinkron használat, Backgroundworker + kiegészítések
+-----------------------------------------------------------------------
+(5gyakorlat.sln)
+
+I. Windows kontrollok kezelése szálból
+
+1. Unsafe hibás, InvokReqiured, Invoke (01ThreadSafeCall2WindowsFormControls.csproj)
+2. BackgroundWorker használata: Console (02UsingBackgroundWorker.csproj)
+3. BackgroundWorker használata: Windows (03BackgroundWorker.csproj - Feladatok(12))
+
+II. ThreadPool és szignálozás
