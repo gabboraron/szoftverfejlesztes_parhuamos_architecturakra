@@ -1,0 +1,5 @@
+bin\Debug\PingPongByMonitorPulseAndWait.exe
+bin\Debug\PingPongByMonitorPulseAndWait.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\PingPongByMonitorPulseAndWait.exe
+obj\Debug\PingPongByMonitorPulseAndWait.pdb

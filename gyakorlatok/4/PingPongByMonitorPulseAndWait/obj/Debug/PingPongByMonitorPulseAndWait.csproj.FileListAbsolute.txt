@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\PingPongByMonitorPulseAndWait\bin\Debug\PingPongByMonitorPulseAndWait.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\PingPongByMonitorPulseAndWait\bin\Debug\PingPongByMonitorPulseAndWait.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\PingPongByMonitorPulseAndWait\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\PingPongByMonitorPulseAndWait\obj\Debug\PingPongByMonitorPulseAndWait.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\PingPongByMonitorPulseAndWait\obj\Debug\PingPongByMonitorPulseAndWait.pdb

@@ -1,0 +1,5 @@
+bin\Debug\SignalingWaitPulse.exe
+bin\Debug\SignalingWaitPulse.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SignalingWaitPulse.exe
+obj\Debug\SignalingWaitPulse.pdb

@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Albahari\SignalingWaitPulse\bin\Debug\SignalingWaitPulse.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Albahari\SignalingWaitPulse\bin\Debug\SignalingWaitPulse.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Albahari\SignalingWaitPulse\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Albahari\SignalingWaitPulse\obj\Debug\SignalingWaitPulse.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Albahari\SignalingWaitPulse\obj\Debug\SignalingWaitPulse.pdb

@@ -1,0 +1,5 @@
+bin\Debug\BasicWaitHandle.exe
+bin\Debug\BasicWaitHandle.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\BasicWaitHandle.exe
+obj\Debug\BasicWaitHandle.pdb
