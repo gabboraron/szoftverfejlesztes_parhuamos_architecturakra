@@ -1,0 +1,22 @@
+4.témakör Szignál konstrukciók
+------------------------------
+(4gyakorlat.sln)
+
+
+I. Monitor osztály
+1. Pulse és Wait: Monitor.Enter -> Ready Queue -> Lock -> Monitor.Wait -> Waiting queue -> Monitor.Pulse -> Ready Queue; flag változó  (01MonitorSignalingWaitPulse.csproj)
+2. Pulse és Wait feladat (02PingPongByMonitorPulseAndWait.csproj - Feladat(8))
+3. Producer/Consumer: szinkronizált körpuffer (CircularBuffer.exe: demo; 03ProducerConsumerWithMonitorWaitPulse.csproj)
+
+II.EventWaitHandle-k
+4. AutoResetEvent: konstruktor, Set, WaitOne (04BasicWaitHandle.csproj)
+5. AutoResetEvent és ManualResetEvent különbség: Reset (05AutoReset_ManualReset.csproj - Feladatok(9))
+6. Két szál kommunikál szignállal + AutoResetEvent(false) = EventWaitHandle(false, EventResetMode.AutoReset, "bmfnik.hu TwoWaySignaling") cross proc. megjegyzés
+(06TwoWaySignalingWithEventWaitHandle.csproj)
+7. WaitAny és WaitAll használata: ki az elsõ, illetve az összes szál szignálozott (07WaitAllWaitAny.csproj)
+
+Megjegyzés: 
+Az egyeb konyvtárban további szignálos megoldások is vannak: Producer/consumer Queue kezelés Monitorral, illetve AutoResetEventtel
+ThreaPool-ba dobált Fibonacci értékek számolása (WaitAll, ManualResetEvent, szál visszatérési érték kezelése)
+ 
+

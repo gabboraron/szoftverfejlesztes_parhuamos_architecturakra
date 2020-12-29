@@ -1,0 +1,5 @@
+bin\Debug\TwoWaySignalingWithEventWaitHandle.exe
+bin\Debug\TwoWaySignalingWithEventWaitHandle.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TwoWaySignalingWithEventWaitHandle.exe
+obj\Debug\TwoWaySignalingWithEventWaitHandle.pdb
