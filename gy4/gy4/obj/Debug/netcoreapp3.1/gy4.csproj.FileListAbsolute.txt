@@ -1,0 +1,13 @@
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\bin\Debug\netcoreapp3.1\gy4.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\bin\Debug\netcoreapp3.1\gy4.deps.json
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\bin\Debug\netcoreapp3.1\gy4.runtimeconfig.json
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\bin\Debug\netcoreapp3.1\gy4.runtimeconfig.dev.json
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\bin\Debug\netcoreapp3.1\gy4.dll
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\bin\Debug\netcoreapp3.1\gy4.pdb
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.csprojAssemblyReference.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.AssemblyInfoInputs.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.AssemblyInfo.cs
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.csproj.CoreCompileInputs.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.dll
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.pdb
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy4\gy4\obj\Debug\netcoreapp3.1\gy4.genruntimeconfig.cache
