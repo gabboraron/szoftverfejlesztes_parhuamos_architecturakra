@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ThreadMethodStaticANDInstance\bin\Debug\ThreadMethodStaticANDInstance.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ThreadMethodStaticANDInstance\bin\Debug\ThreadMethodStaticANDInstance.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ThreadMethodStaticANDInstance\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ThreadMethodStaticANDInstance\obj\Debug\ThreadMethodStaticANDInstance.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\ThreadMethodStaticANDInstance\obj\Debug\ThreadMethodStaticANDInstance.pdb
