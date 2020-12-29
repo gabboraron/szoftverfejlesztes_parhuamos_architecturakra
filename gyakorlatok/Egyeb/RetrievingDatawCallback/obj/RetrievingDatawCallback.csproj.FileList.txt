@@ -1,0 +1,5 @@
+bin\Debug\RetrievingDatawCallback.exe
+bin\Debug\RetrievingDatawCallback.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\RetrievingDatawCallback.exe
+obj\Debug\RetrievingDatawCallback.pdb

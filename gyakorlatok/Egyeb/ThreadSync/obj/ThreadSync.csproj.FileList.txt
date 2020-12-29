@@ -1,0 +1,5 @@
+bin\Debug\ThreadSync.exe
+bin\Debug\ThreadSync.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ThreadSync.exe
+obj\Debug\ThreadSync.pdb

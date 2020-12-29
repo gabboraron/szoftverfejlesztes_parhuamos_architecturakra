@@ -1,0 +1,8 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\bin\Debug\WindowsWaitAll.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\bin\Debug\WindowsWaitAll.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\obj\Debug\WindowsWaitAll.Form1.resources
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\obj\Debug\WindowsWaitAll.Properties.Resources.resources
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\obj\Debug\WindowsWaitAll.csproj.GenerateResource.Cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\obj\Debug\WindowsWaitAll.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\4\WindowsWaitAll\WindowsWaitAll\obj\Debug\WindowsWaitAll.pdb

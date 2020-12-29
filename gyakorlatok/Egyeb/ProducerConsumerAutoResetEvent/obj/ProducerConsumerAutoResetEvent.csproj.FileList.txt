@@ -1,0 +1,5 @@
+bin\Debug\ProducerConsumerAutoResetEvent.exe
+bin\Debug\ProducerConsumerAutoResetEvent.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ProducerConsumerAutoResetEvent.exe
+obj\Debug\ProducerConsumerAutoResetEvent.pdb

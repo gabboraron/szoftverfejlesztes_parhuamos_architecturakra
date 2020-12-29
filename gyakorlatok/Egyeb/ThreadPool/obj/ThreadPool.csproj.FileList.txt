@@ -1,0 +1,5 @@
+bin\Debug\ThreadPool.exe
+bin\Debug\ThreadPool.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ThreadPool.exe
+obj\Debug\ThreadPool.pdb

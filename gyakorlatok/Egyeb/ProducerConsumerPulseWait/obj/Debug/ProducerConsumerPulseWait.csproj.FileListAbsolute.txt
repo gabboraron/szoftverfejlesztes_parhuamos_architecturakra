@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\Egyeb\ProducerConsumerPulseWait\bin\Debug\ProducerConsumerPulseWait.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\Egyeb\ProducerConsumerPulseWait\bin\Debug\ProducerConsumerPulseWait.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\Egyeb\ProducerConsumerPulseWait\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\Egyeb\ProducerConsumerPulseWait\obj\Debug\ProducerConsumerPulseWait.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\Egyeb\ProducerConsumerPulseWait\obj\Debug\ProducerConsumerPulseWait.pdb
