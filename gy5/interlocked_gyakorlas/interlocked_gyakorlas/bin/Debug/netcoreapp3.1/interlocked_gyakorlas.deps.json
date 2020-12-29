@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "interlocked_gyakorlas/1.0.0": {
+        "runtime": {
+          "interlocked_gyakorlas.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "interlocked_gyakorlas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

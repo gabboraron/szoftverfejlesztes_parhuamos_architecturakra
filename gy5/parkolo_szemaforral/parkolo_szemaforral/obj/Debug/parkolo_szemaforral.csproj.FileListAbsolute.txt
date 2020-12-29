@@ -1,0 +1,7 @@
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\bin\Debug\parkolo_szemaforral.exe.config
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\bin\Debug\parkolo_szemaforral.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\bin\Debug\parkolo_szemaforral.pdb
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\obj\Debug\parkolo_szemaforral.csprojAssemblyReference.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\obj\Debug\parkolo_szemaforral.csproj.CoreCompileInputs.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\obj\Debug\parkolo_szemaforral.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gy5\parkolo_szemaforral\parkolo_szemaforral\obj\Debug\parkolo_szemaforral.pdb
