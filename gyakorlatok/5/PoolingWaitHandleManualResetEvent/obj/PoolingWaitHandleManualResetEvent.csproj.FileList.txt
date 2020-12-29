@@ -1,0 +1,5 @@
+bin\Debug\PoolingWaitHandleManualResetEvent.exe
+bin\Debug\PoolingWaitHandleManualResetEvent.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\PoolingWaitHandleManualResetEvent.exe
+obj\Debug\PoolingWaitHandleManualResetEvent.pdb
