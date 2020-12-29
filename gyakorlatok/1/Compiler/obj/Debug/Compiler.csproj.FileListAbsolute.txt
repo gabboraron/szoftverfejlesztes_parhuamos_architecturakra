@@ -1,0 +1,11 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\1\Compiler\obj\Debug\Compiler.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\1\Compiler\obj\Debug\Compiler.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\1\Compiler\bin\Debug\Compiler.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\1\Compiler\bin\Debug\Compiler.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\1\Compiler\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gyakorlatok\1\Compiler\bin\Debug\Compiler.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gyakorlatok\1\Compiler\bin\Debug\Compiler.pdb
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gyakorlatok\1\Compiler\obj\Debug\Compiler.csprojAssemblyReference.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gyakorlatok\1\Compiler\obj\Debug\Compiler.csproj.CoreCompileInputs.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gyakorlatok\1\Compiler\obj\Debug\Compiler.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\gyakorlatok\1\Compiler\obj\Debug\Compiler.pdb

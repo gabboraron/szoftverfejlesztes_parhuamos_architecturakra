@@ -1,0 +1,5 @@
+bin\Debug\Hello.exe
+bin\Debug\Hello.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Hello.exe
+obj\Debug\Hello.pdb
