@@ -1,0 +1,7 @@
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\bin\Debug\tasktest.exe.config
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\bin\Debug\tasktest.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\bin\Debug\tasktest.pdb
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\obj\Debug\tasktest.csprojAssemblyReference.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\obj\Debug\tasktest.csproj.CoreCompileInputs.cache
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\obj\Debug\tasktest.exe
+C:\Users\Sándor\Documents\szoftfejlesztes_parhuzamos_architecturakra\beadando\test\tasktest\tasktest\obj\Debug\tasktest.pdb
