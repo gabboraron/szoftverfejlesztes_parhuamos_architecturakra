@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MemoryBarrierVolatile\bin\Debug\MemoryBarrierVolatile.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MemoryBarrierVolatile\bin\Debug\MemoryBarrierVolatile.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MemoryBarrierVolatile\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MemoryBarrierVolatile\obj\Debug\MemoryBarrierVolatile.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MemoryBarrierVolatile\obj\Debug\MemoryBarrierVolatile.pdb

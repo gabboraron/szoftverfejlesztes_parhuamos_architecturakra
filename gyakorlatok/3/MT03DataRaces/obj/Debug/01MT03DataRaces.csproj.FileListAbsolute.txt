@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MT03DataRaces\obj\Debug\MT03DataRaces.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MT03DataRaces\obj\Debug\MT03DataRaces.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MT03DataRaces\bin\Debug\MT03DataRaces.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MT03DataRaces\bin\Debug\MT03DataRaces.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\MT03DataRaces\obj\Debug\ResolveAssemblyReference.cache

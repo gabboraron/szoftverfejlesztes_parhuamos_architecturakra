@@ -1,0 +1,5 @@
+bin\Debug\Locks.exe
+bin\Debug\Locks.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Locks.exe
+obj\Debug\Locks.pdb

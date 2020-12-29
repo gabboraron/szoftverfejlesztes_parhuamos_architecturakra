@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\LockStringBuilder\bin\Debug\LockStringBuilder.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\LockStringBuilder\bin\Debug\LockStringBuilder.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\LockStringBuilder\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\LockStringBuilder\obj\Debug\LockStringBuilder.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\3\LockStringBuilder\obj\Debug\LockStringBuilder.pdb

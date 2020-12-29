@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\LockStringBuilder.exe
+bin\Debug\LockStringBuilder.pdb
+obj\Debug\LockStringBuilder.exe
+obj\Debug\LockStringBuilder.pdb

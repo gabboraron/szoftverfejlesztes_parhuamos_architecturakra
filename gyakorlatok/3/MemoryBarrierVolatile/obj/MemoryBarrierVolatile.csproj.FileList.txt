@@ -1,0 +1,5 @@
+bin\Debug\MemoryBarrierVolatile.exe
+bin\Debug\MemoryBarrierVolatile.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\MemoryBarrierVolatile.exe
+obj\Debug\MemoryBarrierVolatile.pdb

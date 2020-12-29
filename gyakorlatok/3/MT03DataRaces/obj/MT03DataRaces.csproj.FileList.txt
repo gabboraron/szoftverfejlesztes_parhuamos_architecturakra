@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\MT03DataRaces.exe
+bin\Debug\MT03DataRaces.pdb
+obj\Debug\MT03DataRaces.exe
+obj\Debug\MT03DataRaces.pdb

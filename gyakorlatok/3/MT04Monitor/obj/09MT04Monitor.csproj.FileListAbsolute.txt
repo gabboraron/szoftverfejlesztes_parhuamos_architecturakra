@@ -1,0 +1,5 @@
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT04Monitor\bin\Debug\MT04Monitor.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT04Monitor\bin\Debug\MT04Monitor.pdb
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT04Monitor\obj\Debug\ResolveAssemblyReference.cache
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT04Monitor\obj\Debug\MT04Monitor.exe
+E:\Vamossy\CS\ParhuzamosProgramozas\TobbSzalTobbMagMiklosArpi\Gyakorlatok\2\MT04Monitor\obj\Debug\MT04Monitor.pdb

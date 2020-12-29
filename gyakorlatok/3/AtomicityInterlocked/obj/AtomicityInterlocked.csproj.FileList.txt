@@ -1,0 +1,5 @@
+bin\Debug\AtomicityInterlocked.exe
+bin\Debug\AtomicityInterlocked.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\AtomicityInterlocked.exe
+obj\Debug\AtomicityInterlocked.pdb
