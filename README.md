@@ -1,5 +1,7 @@
 > Hivatalos diasor: http://users.nik.uni-obuda.hu/vamossy/SZPE2018/
 >
+> Hivatalos segédanyagok: https://www.tankonyvtar.hu/hu/tartalom/tamop425/0053_Tobbszalu_Tobbmagos_Processzorarchitekturak_Programozasa/tobbszalu.pdf, https://www.inf.elte.hu/dstore/document/287/Parhuzamos-algoritmusok.pdf, https://docplayer.hu/1783123-Szamitogep-architekturak-i-ii-iii.html
+>
 > Ez csak egy jegyzet a tárgyhoz!
 
 # Tartalom:
@@ -541,7 +543,7 @@ Ezekre megoldás a `Monitor` osztály, a háttérben a `lock` szintén ezt haszn
 
 .NET osztály: `System.Threading.Interlocked`
 - `Add()` - 32/64b hozzáadása egészként változóhoz
-- `CompareExchange()` - hivatkozott változó értékének 
+- `CompareExchange()` - hivatkozott változó értékének összehasonlítása és egy értékadás is egyben, bővebben:https://docs.microsoft.com/en-us/dotnet/api/system.threading.interlocked.exchange?view=net-5.0 
 - `Decrement()`,`Increment()` - A hivatkozott változó értékének csökkentése, illetve növelése 1-gyel
 - `Exchange()` - A hivatkozott változó értékének beállítása és az eredeti érték visszaadása
 - `Read()` - hivatkozott 64 bites változó értékének kiolvasása (32 bites rendszeren is atomi műveletként)
