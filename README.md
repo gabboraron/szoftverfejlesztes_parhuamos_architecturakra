@@ -132,6 +132,13 @@
 
 ##### Adatfolyam-gráf modell 
 > bemenő adatfolymaokból a modellstruktúrát felépítő feldolgozó egységek kimenő adatfolyamokat állítanak elő. Adatfolyam-ábrával moddelezhető.
+> 
+> *A matematikai kifejezés, melyet implementálni szeretnénk egy szöveges fájlban van leírva, melyben a kifejezés ki- és bemenetei, valamint átmeneti az változók is definiálva vannak. Az program a szöveges fájl alapján építi fel a kifejezés adatfolyam gráf reprezentációját, melyben minden operátor egy csúccsal van leírva, és minden csúcshoz hozzá van rendelve az operátornak megfelelő műveletvégző egység késleltetése.
+>
+> A következő lépésben a gráf csúcsait szintekhez [36] rendeljük. A gráfból egy speciális páros gráf lesz, melyben minden él olyan csúcshoz mutat, mely közvetlenül a következő szinten van.*
+> 
+> *forrás: [https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2011-0052_21_parhuzamos_szamitogep_architekturak_processzortombok/ar01s07.html](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2011-0052_21_parhuzamos_szamitogep_architekturak_processzortombok/ar01s07.html)
+
 
 ##### Feladat/csatorna modell 
 > *Ian T. Foster, 1995*
